@@ -7,10 +7,17 @@
             <nav>
               <ul class="pagination justify-content-end">
                 <li v-if="pre_url!=null" class="page-item">
-                  <a class="page-link" href="#" tabindex="-1" @click="getPreviousPage">Previous Page</a>
+                  <a class="page-link" href="#" tabindex="-1" @click="getPreviousPage">Prev</a>
                 </li>
+                <li v-else class="page-item disabled">
+                  <a class="page-link" href="#" tabindex="-1" @click="getPreviousPage">Prev</a>
+                </li>
+
                 <li v-if="nxt_url!=null" class="page-item">
-                  <a class="page-link" href="#" @click="getNextPage">Next Page</a>
+                  <a class="page-link" href="#" @click="getNextPage">Next</a>
+                </li>
+                <li v-else class="page-item disabled">
+                  <a class="page-link" href="#" @click="getNextPage">Next</a>
                 </li>
               </ul>
           </nav>

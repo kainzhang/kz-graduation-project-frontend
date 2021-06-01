@@ -4,7 +4,7 @@ import NotFound from '../pages/NotFoundPage.vue'
 
 // Admin pages
 import Overview from 'src/pages/Overview.vue'
-import UserProfile from 'src/pages/UserProfile.vue'
+import MovieDetail from 'src/pages/MovieDetail.vue'
 import Books from 'src/pages/Books.vue'
 import Analyses from 'src/pages/Analyses.vue'
 import Icons from 'src/pages/Icons.vue'
@@ -29,9 +29,9 @@ const routes = [
         component: Overview
       },
       {
-        path: 'user',
-        name: 'User',
-        component: UserProfile
+        path: 'moviedetail',
+        name: 'MovieDetail',
+        component: MovieDetail
       },
       {
         path: 'books',

@@ -52,23 +52,6 @@
             </tbody>
           </table>
           </card>
-
-        </div>
-
-        <!-- <div class="col-12">
-          <card class="strpied-tabled-with-hover"
-                body-classes="table-full-width table-responsive"
-          >
-            <template slot="header">
-              <h4 class="card-title">已收录的豆瓣电影</h4>
-              <p class="card-category">所有信息通过爬虫获取自豆瓣官方</p>
-            </template>
-            <l-table class="table-hover table-striped"
-                     :columns="tableColumns"
-                     :data="tableData">
-            </l-table>
-          </card>
-
         </div>
 
         <div class="col-12">
@@ -126,9 +109,6 @@
         num_movie: 0,
         num_page: 0,
       }
-    },
-    created() {
-      this.getAll()
     },
     methods: {
       getAll() {

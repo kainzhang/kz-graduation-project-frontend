@@ -43,7 +43,7 @@
     props: {
       title: {
         type: String,
-        default: 'Vue LBD'
+        default: 'KAIN ZHANG'
       },
       backgroundColor: {
         type: String,
@@ -55,7 +55,7 @@
       },
       backgroundImage: {
         type: String,
-        default: 'img/sidebar-5.jpg'
+        default: 'img/sidebar-6.jpg'
       },
       activeColor: {
         type: String,

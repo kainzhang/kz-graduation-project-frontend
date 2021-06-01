@@ -6,9 +6,9 @@
         <i class="nc-icon nc-chart-pie-35"></i>
         <p>Dashboard</p>
       </sidebar-link>
-      <sidebar-link to="/user">
+      <sidebar-link to="/moviedetail">
         <i class="nc-icon nc-circle-09"></i>
-        <p>User Profile</p>
+        <p>Movie Detail</p>
       </sidebar-link>
       <sidebar-link to="/movies">
         <i class="nc-icon nc-pin-3"></i>

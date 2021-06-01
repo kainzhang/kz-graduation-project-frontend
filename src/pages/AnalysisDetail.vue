@@ -139,10 +139,12 @@ export default {
   },
   data() {
     return {
-      analysisUrl: 'http://localhost:8000/douban/item_analysis/57/',
+      analysisApi: 'http://localhost:8000/douban/item_analysis/',
+      movieApi: 'http://localhost:8000/douban/movie/',
+      bookApi: 'http://localhost:8000/douban/book/',
+      analysisId: -1,
       chartData: {},
       coverUrl: '',
-      itemId: 0,
       itemData: {},
       commentNum: 0,
       starsCnt: {},
@@ -537,40 +539,62 @@ export default {
           }
         ]
       });
-    }
-    
-  },
-  mounted() {
-    axios.get(this.analysisUrl).then(res => {
-        this.chartData = res.data
-        this.itemId = this.chartData.dad_id
-        this.commentNum = this.chartData.comment_num
-        this.coverUrl = 'http://localhost:8000/media/img/'+ this.itemId + '.jpg'
-        console.log(this.coverUrl)
+    },
 
-        this.starsCnt = JSON.parse(this.chartData.stars_cnt)
+    getAnalysisDetail(analysisId) {
+      axios.get(this.analysisApi + analysisId).then(res => {
+        this.chartData = res.data
+        
+        if (this.chartData.dad_type == 1) {
+          this.getMovieDetail(this.chartData.dad_id);
+        } else if (this.chartData.dad_type == 2) {
+          this.getBookDetail(this.chartData.dad_id);
+        }
+        console.log(this.chartData)
+        this.commentNum = this.chartData.comment_num;
+        
+        this.itemId = this.chartData.dad_id;
+        this.coverUrl = 'http://localhost:8000/media/img/'+ this.itemId + '.jpg';
+
+        this.starsCnt = JSON.parse(this.chartData.stars_cnt);
         this.starsCntChart();
 
-        this.sentiNum = JSON.parse(this.chartData.senti_num)
+        this.sentiNum = JSON.parse(this.chartData.senti_num);
         this.sentiNumChart();
 
         this.sentiRateChart();
 
-        this.sentiPerYear = JSON.parse(this.chartData.senti_per_year)
+        this.sentiPerYear = JSON.parse(this.chartData.senti_per_year);
         this.sentiPerYearChart();
 
-        this.sentiSumYear = JSON.parse(this.chartData.senti_sum_year)
+        this.sentiSumYear = JSON.parse(this.chartData.senti_sum_year);
         this.sentiSumYearChart();
+      });
+    },
+    getMovieDetail(movieId) {
+      axios.get(this.movieApi, {
+        params: {
+          search: movieId
+        }
+      }).then(res => {
+        this.itemData = res.data.results[0];
+      })
+    },
+    getBookDetail(bookId) {
+      axios.get(this.bookApi, {
+        params: {
+          search: bookId
+        }
+      }).then(res => {
+        this.itemData = res.data.results[0];
+      })
+    }
 
-    });
-    axios.get('http://localhost:8000/douban/movie/', {
-      params: {
-        search: 1307694
-      }
-    }).then(res => {
-      this.itemData = res.data.results[0];
-      console.log(this.itemData)
-    })
+  },
+  mounted() {
+    this.analysisId = this.$route.query.analysis_id;
+    console.log('analysis_id: ' + this.analysisId)
+    this.getAnalysisDetail(this.analysisId);
   },
   created() {
     

@@ -18,7 +18,7 @@
         <i class="nc-icon nc-notes"></i>
         <p>Books</p>
       </sidebar-link>
-      <sidebar-link to="/analysisdetail">
+      <sidebar-link to="/analysis/detail">
         <i class="nc-icon nc-paper-2"></i>
         <p>Analysis Detail</p>
       </sidebar-link>
@@ -34,9 +34,9 @@
         <i class="nc-icon nc-bell-55"></i>
         <p>Comments</p>
       </sidebar-link>
-      <sidebar-link to="/notifications">
+      <sidebar-link to="/analysis">
         <i class="nc-icon nc-bell-55"></i>
-        <p>Notifications</p>
+        <p>Analysis</p>
       </sidebar-link>
 
       <template slot="bottom-links">

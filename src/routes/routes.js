@@ -4,13 +4,14 @@ import NotFound from '../pages/NotFoundPage.vue'
 
 // Admin pages
 import Overview from 'src/pages/Overview.vue'
+import Movies from 'src/pages/Movies.vue'
 import MovieDetail from 'src/pages/MovieDetail.vue'
 import Books from 'src/pages/Books.vue'
+import Analysis from 'src/pages/Analysis.vue'
 import AnalysisDetail from 'src/pages/AnalysisDetail.vue'
+import Comments from 'src/pages/Comments.vue'
 import Icons from 'src/pages/Icons.vue'
 import Notifications from 'src/pages/Notifications.vue'
-import Movies from 'src/pages/Movies.vue'
-import Comments from 'src/pages/Comments.vue'
 import Upgrade from 'src/pages/Upgrade.vue'
 
 const routes = [
@@ -40,7 +41,7 @@ const routes = [
         component: Books
       },
       {
-        path: 'analysisdetail',
+        path: 'analysis/detail',
         name: 'Analysis Detail',
         component: AnalysisDetail
       },
@@ -63,6 +64,11 @@ const routes = [
         path: 'comments',
         name: 'comments',
         component: Comments
+      },
+      {
+        path: 'analysis',
+        name: 'Analysis',
+        component: Analysis
       },
       {
         path: 'upgrade',

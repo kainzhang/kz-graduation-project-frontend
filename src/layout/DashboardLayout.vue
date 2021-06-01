@@ -11,20 +11,28 @@
         <p>Movie Detail</p>
       </sidebar-link>
       <sidebar-link to="/movies">
-        <i class="nc-icon nc-pin-3"></i>
+        <i class="nc-icon nc-button-play"></i>
         <p>Movies</p>
       </sidebar-link>
       <sidebar-link to="/books">
         <i class="nc-icon nc-notes"></i>
         <p>Books</p>
       </sidebar-link>
-      <sidebar-link to="/analyses">
+      <sidebar-link to="/analysisdetail">
         <i class="nc-icon nc-paper-2"></i>
-        <p>Analyses</p>
+        <p>Analysis Detail</p>
       </sidebar-link>
       <sidebar-link to="/icons">
         <i class="nc-icon nc-atom"></i>
         <p>Icons</p>
+      </sidebar-link>
+      <sidebar-link to="/notifications">
+        <i class="nc-icon nc-bell-55"></i>
+        <p>Notifications</p>
+      </sidebar-link>
+      <sidebar-link to="/comments">
+        <i class="nc-icon nc-bell-55"></i>
+        <p>Comments</p>
       </sidebar-link>
       <sidebar-link to="/notifications">
         <i class="nc-icon nc-bell-55"></i>

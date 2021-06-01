@@ -25,13 +25,6 @@
                 </div>
 
                 <div class="form-group row">
-                  <label class="col-sm-3 col-form-label">Alias:</label>
-                  <div class="col-sm-9">
-                    <input type="text" readonly class="form-control-plaintext" :value="itemData.alias">
-                  </div>
-                </div>
-
-                <div class="form-group row">
                   <label class="col-sm-3 col-form-label">Genre:</label>
                   <div class="col-sm-9">
                     <input type="text" readonly class="form-control-plaintext" :value="itemData.genre">
@@ -49,6 +42,13 @@
                   <label class="col-sm-3 col-form-label">Region:</label>
                   <div class="col-sm-9">
                     <input type="text" readonly class="form-control-plaintext" :value="itemData.region">
+                  </div>
+                </div>
+
+                 <div class="form-group row">
+                  <label class="col-sm-3 col-form-label">Pub Date:</label>
+                  <div class="col-sm-9">
+                    <input type="text" readonly class="form-control-plaintext" :value="itemData.pub_date">
                   </div>
                 </div>
 
@@ -520,19 +520,19 @@ export default {
           {
             name: 'Positive',
             type: 'line',
-            stack: '总量',
+            stack: '正面评论',
             data: this.sentiSumYear.pos
           },
           {
             name: 'Neutral',
             type: 'line',
-            stack: '总量',
+            stack: '中立评论',
             data: this.sentiSumYear.neu
           },
           {
             name: 'Negtive',
             type: 'line',
-            stack: '总量',
+            stack: '负面评论',
             data: this.sentiSumYear.neg
           }
         ]

@@ -30,26 +30,24 @@
                 body-classes="table-full-width table-responsive"
           >
             <template slot="header">
-              <h4 class="card-title">Bootstrap Test</h4>
-              <p class="card-category">this is just a test</p>
+              <h4 class="card-title">评论列表</h4>
+              <p class="card-category">Comment List</p>
             </template>
             <table class="table table-striped">
             <thead>
               <tr>
-                <th scope="col"></th>
-                <th scope="col">NAME</th>
-                <th scope="col">GENRE</th>
+                <th scope="col">OBJECT</th>
+                <th scope="col">CONTENT</th>
                 <th scope="col">RATING</th>
-                <th scope="col">Operations</th>
+                <th scope="col">SCORE</th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="movie in movieList" :key="movie.url">
-                <td><a :href=movie.douban_url>url</a></td>
-                <td>{{ movie.name }}</td>
-                <td>{{ movie.genre }}</td>
-                <td>{{ movie.rating_val }}</td>
-                <td>Test</td>
+              <tr v-for="comment in commentList" :key="comment.url">
+                <td>{{ comment.dad_id }}</td>
+                <td>{{ comment.content }}</td>
+                <td>{{ comment.rating_val }}</td>
+                <td>{{ comment.senti_score.toFixed(6) }}</td>
               </tr>
             </tbody>
           </table>
@@ -103,32 +101,31 @@
     },
     data () {
       return {
-        movieApi: 'http://127.0.0.1:8000/douban/movie/?ordering=-create_date&page=1',
-        movieList: {},
+        commentApi: 'http://localhost:8000/douban/comment/',
+        commentList: {},
         nextUrl: null,
         prevUrl: null,
-        numMovie: 0,
+        numComment: 0,
         numPage: 0,
       }
     },
     methods: {
       getAll() {
-        axios.get(this.movieApi)
+        axios.get(this.commentApi)
           .then(res => {
-            this.movieData = res.data;
-            this.movieList = res.data.results;
-            this.numMovie = res.data.count;
+            this.commentList = res.data.results;
+            this.numComment = res.data.count;
             this.prevUrl = res.data.previous;
             this.nextUrl = res.data.next;
-            this.numPage = Math.ceil(this.numMovie / 10);
+            this.numPage = Math.ceil(this.numComment / 10);
           });
       },
       getNextPage() {
-        this.movieApi = this.nextUrl;
+        this.commentApi = this.nextUrl;
         this.getAll();
       },
       getPreviousPage() {
-        this.movieApi = this.prevUrl;
+        this.commentApi = this.prevUrl;
         this.getAll();
       }
     },

@@ -6,7 +6,7 @@
           <card class="card-user">
 
             <div align="center" style="padding: 20px">
-              <img class="movie-detail-cover" :src="movieCover" :alt="movieData.name" style="height: 380px"/>
+              <img class="img-fluid" :src="movieCover" :alt="movieData.name" />
             </div>
             <hr>
             <p class="description text-center" style="margin-top: 20px">

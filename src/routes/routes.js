@@ -6,10 +6,11 @@ import NotFound from '../pages/NotFoundPage.vue'
 import Overview from 'src/pages/Overview.vue'
 import MovieDetail from 'src/pages/MovieDetail.vue'
 import Books from 'src/pages/Books.vue'
-import Analyses from 'src/pages/Analyses.vue'
+import AnalysisDetail from 'src/pages/AnalysisDetail.vue'
 import Icons from 'src/pages/Icons.vue'
 import Notifications from 'src/pages/Notifications.vue'
 import Movies from 'src/pages/Movies.vue'
+import Comments from 'src/pages/Comments.vue'
 import Upgrade from 'src/pages/Upgrade.vue'
 
 const routes = [
@@ -30,7 +31,7 @@ const routes = [
       },
       {
         path: 'moviedetail',
-        name: 'MovieDetail',
+        name: 'Movie Detail',
         component: MovieDetail
       },
       {
@@ -39,9 +40,9 @@ const routes = [
         component: Books
       },
       {
-        path: 'analyses',
-        name: 'Analyses',
-        component: Analyses
+        path: 'analysisdetail',
+        name: 'Analysis Detail',
+        component: AnalysisDetail
       },
       {
         path: 'icons',
@@ -57,6 +58,11 @@ const routes = [
         path: 'notifications',
         name: 'Notifications',
         component: Notifications
+      },
+      {
+        path: 'comments',
+        name: 'comments',
+        component: Comments
       },
       {
         path: 'upgrade',

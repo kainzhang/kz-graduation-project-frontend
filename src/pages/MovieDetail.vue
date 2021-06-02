@@ -13,9 +13,9 @@
               {{ movieData.description }}
             </p>
             <div slot="footer" class="text-center d-flex justify-content-center">
-              <a :href="movieData.douban_url" class="btn btn-simple">Analysis</a>
+              <a href="#" class="btn btn-simple" @click="getMovieAnalysis()">Analysis</a>
               <a href="#" class="btn btn-simple">|</a>
-              <a :href="movieData.douban_url" class="btn btn-simple">Comments</a>
+              <a href="#" class="btn btn-simple" @click="getMovieComment()">Comments</a>
             </div>
           </card>
         </div>
@@ -173,20 +173,36 @@
       }
     },
     methods: {
-      getMovieDetail(movieId) {
+      getMovieDetail() {
         axios.get(this.movieApi, {
           params: {
-            search: movieId
+            search: this.movieId
           }
         }).then(res => {
           this.movieData = res.data.results[0];
-          this.movieCover = this.mediaUrl + movieId + '.jpg'
+          this.movieCover = this.mediaUrl + this.movieId + '.jpg'
+        })
+      },
+      getMovieComment() {
+        this.$router.push({
+          path: '/comment/',
+          query: {
+            douban_id: this.movieId
+          }
+        })
+      },
+      getMovieAnalysis() {
+        this.$router.push({
+          path: '/analysis/',
+          query: {
+            douban_id: this.movieId
+          }
         })
       }
     },
     mounted() {
       this.movieId = this.$route.query.movie_id;
-      this.getMovieDetail(this.movieId)
+      this.getMovieDetail()
     }
   }
 

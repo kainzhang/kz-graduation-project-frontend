@@ -1,6 +1,22 @@
 <template>
   <div class="content">
     <div class="container-fluid">
+
+      <div class="row">
+        <div class="col-7">
+          <div class="form-group">
+            <label for="comment-search-input">Search</label>
+            <input type="text" class="form-control" v-model="dadId" id="comment-search-input" placeholder="Douban ID">
+            <small class="form-text text-muted">输入电影或图书的 Douban ID 查询所属评论</small>
+          </div>
+        </div>
+
+        <div class="col-5">
+          <button type="button" class="operation-btn btn btn-round btn-fill btn-primary" @click="getAll()">Search</button>
+        </div>
+      </div>
+
+        
       <div class="row">
 
         <div class="col-12">
@@ -107,18 +123,22 @@
         prevUrl: null,
         numComment: 0,
         numPage: 0,
+        dadId: ''
       }
     },
     methods: {
       getAll() {
-        axios.get(this.commentApi)
-          .then(res => {
-            this.commentList = res.data.results;
-            this.numComment = res.data.count;
-            this.prevUrl = res.data.previous;
-            this.nextUrl = res.data.next;
-            this.numPage = Math.ceil(this.numComment / 10);
-          });
+        axios.get(this.commentApi, {
+          params: {
+            search: this.dadId
+          }
+        }).then(res => {
+          this.commentList = res.data.results;
+          this.numComment = res.data.count;
+          this.prevUrl = res.data.previous;
+          this.nextUrl = res.data.next;
+          this.numPage = Math.ceil(this.numComment / 10);
+        });
       },
       getNextPage() {
         this.commentApi = this.nextUrl;
@@ -130,8 +150,8 @@
       }
     },
     mounted() {
+      this.dadId = this.$route.query.douban_id;
       this.getAll();
-      console.log(this.numPage);
     }
   }
 </script>

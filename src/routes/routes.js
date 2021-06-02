@@ -9,7 +9,7 @@ import MovieDetail from 'src/pages/MovieDetail.vue'
 import Books from 'src/pages/Books.vue'
 import Analysis from 'src/pages/Analysis.vue'
 import AnalysisDetail from 'src/pages/AnalysisDetail.vue'
-import Comments from 'src/pages/Comments.vue'
+import Comment from 'src/pages/Comment.vue'
 import Icons from 'src/pages/Icons.vue'
 import Notifications from 'src/pages/Notifications.vue'
 import Upgrade from 'src/pages/Upgrade.vue'
@@ -66,9 +66,9 @@ const routes = [
         component: Notifications
       },
       {
-        path: 'comments/',
-        name: 'comments',
-        component: Comments
+        path: 'comment/',
+        name: 'comment',
+        component: Comment
       },
       {
         path: 'upgrade/',

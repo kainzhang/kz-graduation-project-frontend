@@ -34,7 +34,7 @@
         <i class="nc-icon nc-bell-55"></i>
         <p>Notifications</p>
       </sidebar-link>
-      <sidebar-link to="/comments/">
+      <sidebar-link to="/comment/">
         <i class="nc-icon nc-bell-55"></i>
         <p>Comments</p>
       </sidebar-link>

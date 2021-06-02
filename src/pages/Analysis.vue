@@ -1,6 +1,22 @@
 <template>
   <div class="content">
     <div class="container-fluid">
+
+      <div class="row">
+        <div class="col-7">
+          <div class="form-group">
+            <label for="analysis-search-input">Search</label>
+            <input type="text" class="form-control" v-model="dadId" id="analysis-search-input" placeholder="Douban ID">
+            <small class="form-text text-muted">输入电影或图书的 Douban ID 查询所属分析结果</small>
+          </div>
+        </div>
+
+        <div class="col-5">
+          <button type="button" class="operation-btn btn btn-round btn-fill btn-primary" @click="getAll()">Search</button>
+        </div>
+      </div>
+
+
       <div class="row">
 
         <div class="col-12">
@@ -21,7 +37,6 @@
                 </li>
               </ul>
           </nav>
-      
         </div>
 
 
@@ -77,18 +92,22 @@
         prevUrl: null,
         numAnalysis: 0,
         numPage: 0,
+        dadId: '',
       }
     },
     methods: {
       getAll() {
-        axios.get(this.analysisApi)
-          .then(res => {
-            this.analysisList = res.data.results;
-            this.numAnalysis = res.data.count;
-            this.prevUrl = res.data.previous;
-            this.nextUrl = res.data.next;
-            this.numPage = Math.ceil(this.numAnalysis / 10);
-          });
+        axios.get(this.analysisApi, {
+          params: {
+            search: this.dadId
+          }
+        }).then(res => {
+          this.analysisList = res.data.results;
+          this.numAnalysis = res.data.count;
+          this.prevUrl = res.data.previous;
+          this.nextUrl = res.data.next;
+          this.numPage = Math.ceil(this.numAnalysis / 10);
+        });
       },
       getNextPage() {
         this.analysisApi = this.nextUrl;
@@ -109,6 +128,7 @@
 
     },
     mounted() {
+      this.dadId = this.$route.query.douban_id;
       this.getAll();
     }
   }

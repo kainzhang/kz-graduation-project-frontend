@@ -7,7 +7,7 @@
           <label for="basic-url">Douban URL</label>
           <div class="input-group mb-9">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon3">https://movie.douban.com/subject/</span>
+              <span class="input-group-text" id="basic-addon3">https://book.douban.com/subject/</span>
             </div>
             <input type="text" class="form-control" v-model="doubanId" id="basic-url" aria-describedby="basic-addon3" placeholder="Douban ID">
           </div>
@@ -15,14 +15,14 @@
         </div> 
 
         <div class="col-5">
-          <button type="button" class="operation-btn btn btn-round btn-fill btn-primary" @click="insertMovie()">Crawl</button>
+          <button type="button" class="operation-btn btn btn-round btn-fill btn-primary" @click="insertBook()">Crawl</button>
         </div>
 
         <div class="col-7">
           <div class="form-group">
-            <label for="movie-search-input">Search</label>
-            <input type="text" class="form-control" v-model="searchStr" id="movie-search-input" placeholder="Keyword or Douban ID">
-            <small class="form-text text-muted">输入电影相关信息或豆瓣ID以查询电影条目</small>
+            <label for="book-search-input">Search</label>
+            <input type="text" class="form-control" v-model="searchStr" id="book-search-input" placeholder="Keyword or Douban ID">
+            <small class="form-text text-muted">输入图书相关信息或豆瓣ID以查询电影条目</small>
           </div>
         </div>
 
@@ -60,8 +60,8 @@
                 body-classes="table-full-width table-responsive"
           >
             <template slot="header">
-              <h4 class="card-title">已收录的电影列表</h4>
-              <p class="card-category">Movies in the database. All data was crawled from Douban.</p>
+              <h4 class="card-title">已收录的图书列表</h4>
+              <p class="card-category">Books in the database. All data was crawled from Douban.</p>
               
             </template>
             <table class="table table-striped">
@@ -69,54 +69,23 @@
               <tr>
                 <th scope="col">ID</th>
                 <th scope="col">NAME</th>
-                <th scope="col">GENRE</th>
+                <th scope="col">AUTHOR</th>
                 <th scope="col">RATING</th>
                 <th scope="col">OPERATION</th>
               </tr>
             </thead>
             <tbody>
-              <tr v-for="movie in movieList" :key="movie.url">
-                <td><a :href=movie.douban_url>{{ movie.id }}</a></td>
-                <td>{{ movie.name }}</td>
-                <td>{{ movie.genre }}</td>
-                <td>{{ movie.rating_val }}</td>
-                <td><button @click="getDetail(movie.id)">detail</button></td>
+              <tr v-for="book in bookList" :key="book.url">
+                <td><a :href=book.douban_url>{{ book.id }}</a></td>
+                <td>{{ book.name }}</td>
+                <td>{{ book.author }}</td>
+                <td>{{ book.rating_val }}</td>
+                <td><button @click="getDetail(book.id)">detail</button></td>
               </tr>
             </tbody>
           </table>
           </card>
         </div>
-
-        <!-- <div class="col-12">
-          <card class="card-plain">
-            <template slot="header">
-              <h4 class="card-title">Table on Plain Background</h4>
-              <p class="card-category">Here is a subtitle for this table</p>
-            </template>
-            <div class="table-responsive">
-              <l-table class="table-hover"
-                       :columns="tableColumns"
-                       :data="tableData">
-              </l-table>
-            </div>
-          </card>
-        </div>
-
-        <div class="col-12">
-          <card class="strpied-tabled-with-hover"
-                body-classes="table-full-width table-responsive"
-          >
-            <template slot="header">
-              <h4 class="card-title">Small table</h4>
-              <p class="card-category">Here is a subtitle for this table</p>
-            </template>
-            <l-table class="table-hover table-striped table-sm"
-                     :columns="tableColumns"
-                     :data="tableData">
-            </l-table>
-          </card>
-
-        </div> -->
 
       </div>
     </div>
@@ -138,11 +107,11 @@
         notifications: {
           topCenter: false
         },
-        movieApi: 'http://127.0.0.1:8000/douban/movie/',
-        movieList: {},
+        bookApi: 'http://127.0.0.1:8000/douban/book/',
+        bookList: {},
         nextUrl: null,
         prevUrl: null,
-        numMovie: 0,
+        numBook: 0,
         numPage: 0,
         nowPage: 1,
         searchStr: '',
@@ -151,7 +120,7 @@
     },
     methods: {
       getAll() {
-        axios.get(this.movieApi, {
+        axios.get(this.bookApi, {
           params: {
             ordering: '-create_date',
             page: this.nowPage,
@@ -159,11 +128,11 @@
           }
         })
           .then(res => {
-            this.movieList = res.data.results;
-            this.numMovie = res.data.count;
+            this.bookList = res.data.results;
+            this.numBook = res.data.count;
             this.prevUrl = res.data.previous;
             this.nextUrl = res.data.next;
-            this.numPage = Math.ceil(this.numMovie / 10);
+            this.numPage = Math.ceil(this.numBook / 10);
           });
       },
       getNextPage() {
@@ -174,17 +143,17 @@
         this.nowPage -= 1;
         this.getAll();
       },
-      getDetail(movieId) {
+      getDetail(bookId) {
         this.$router.push({
-          path: '/movie/detail/',
+          path: '/book/detail/',
           query: {
-            movie_id: movieId
+            book_id: bookId
           }
         })
       },
-      insertMovie() {
-        axios.post(this.movieApi, {
-          douban_url: 'https://movie.douban.com/subject/' + this.doubanId
+      insertBook() {
+        axios.post(this.bookApi, {
+          douban_url: 'https://book.douban.com/subject/' + this.doubanId
         }).then(() => {
           this.notifyVue('top', 'right');
         })
@@ -208,9 +177,5 @@
   }
 </script>
 <style type="text/css">
-  .operation-btn {
-    margin-top: 32px;
-    line-height: 20px;
-    width: 100px;
-  }
+
 </style>

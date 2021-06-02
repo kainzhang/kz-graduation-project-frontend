@@ -6,7 +6,8 @@ import NotFound from '../pages/NotFoundPage.vue'
 import Overview from 'src/pages/Overview.vue'
 import Movie from 'src/pages/Movie.vue'
 import MovieDetail from 'src/pages/MovieDetail.vue'
-import Books from 'src/pages/Books.vue'
+import Book from 'src/pages/Book.vue'
+import BookDetail from 'src/pages/BookDetail.vue'
 import Analysis from 'src/pages/Analysis.vue'
 import AnalysisDetail from 'src/pages/AnalysisDetail.vue'
 import Comment from 'src/pages/Comment.vue'
@@ -31,9 +32,14 @@ const routes = [
         component: Overview
       },
       {
-        path: 'books/',
-        name: 'Books',
-        component: Books
+        path: 'book/',
+        name: 'Book',
+        component: Book
+      },
+      {
+        path: 'book/detail',
+        name: 'Book Detail',
+        component: BookDetail
       },
       {
         path: 'analysis/',

@@ -24,17 +24,23 @@
                   </div>
                 </div>
 
-                <div class="form-group row">
-                  <label class="col-sm-3 col-form-label">GENRE:</label>
+                <div class="form-group row" v-if="chartData.dad_type==1" >
+                  <label class="col-sm-3 col-form-label">DIRECTOR:</label>
                   <div class="col-sm-9">
-                    <input type="text" readonly class="form-control-plaintext" :value="itemData.genre">
+                    <input type="text" readonly class="form-control-plaintext" :value="itemData.director">
+                  </div>
+                </div>
+                <div class="form-group row" v-else-if="chartData.dad_type==2" >
+                  <label class="col-sm-3 col-form-label">AUTHOR:</label>
+                  <div class="col-sm-9">
+                    <input type="text" readonly class="form-control-plaintext" :value="itemData.author">
                   </div>
                 </div>
 
                 <div class="form-group row">
-                  <label class="col-sm-3 col-form-label">DIRECTOR:</label>
+                  <label class="col-sm-3 col-form-label">PUB DATE:</label>
                   <div class="col-sm-9">
-                    <input type="text" readonly class="form-control-plaintext" :value="itemData.director">
+                    <input type="text" readonly class="form-control-plaintext" :value="itemData.pub_date">
                   </div>
                 </div>
 
@@ -62,8 +68,8 @@
                 
               </div>
               
-              <a :href="itemData.douban_url" class="btn btn-primary btn-sm active analysis-btn" role="button" aria-pressed="true">Comments</a>
-              <a :href="itemData.douban_url" class="btn btn-success btn-sm active analysis-btn" role="button" aria-pressed="true">Douban</a>
+              <a @click="toComment()" class="btn btn-primary btn-sm active analysis-btn" role="button" aria-pressed="true">Comments</a>
+              <a @click="toDetail()" class="btn btn-success btn-sm active analysis-btn" role="button" aria-pressed="true">Detail</a>
 
             </div>
             
@@ -102,8 +108,6 @@
             <div id="senti-num" style="height: 100%"></div>
           </card>
         </div>
-
-
 
         <div class="col-6">
           <card style="height: 375px">
@@ -552,7 +556,7 @@ export default {
         } else if (this.chartData.dad_type == 2) {
           this.getBookDetail(this.chartData.dad_id);
         }
-        // console.log(this.chartData)
+        
         this.chartData.pos_rate = this.chartData.pos_rate.toFixed(6)
         this.commentNum = this.chartData.comment_num;
         
@@ -591,12 +595,36 @@ export default {
       }).then(res => {
         this.itemData = res.data.results[0];
       })
+    },
+    toComment() {
+      this.$router.push({
+        path: '/comment/',
+        query: {
+          douban_id: this.chartData.dad_id
+        }
+      })
+    },
+    toDetail() {
+      if (this.chartData.dad_type == 1) {
+        this.$router.push({
+          path: '/movie/detail/',
+          query: {
+            movie_id: this.chartData.dad_id
+          }
+        });
+      } else if (this.chartData.dad_type == 2) {
+        this.$router.push({
+          path: '/book/detail/',
+          query: {
+            book_id: this.chartData.dad_id
+          }
+        });
+      }
     }
 
   },
   mounted() {
     this.analysisId = this.$route.query.analysis_id;
-    console.log('analysis_id: ' + this.analysisId)
     this.getAnalysisDetail(this.analysisId);
   },
   created() {

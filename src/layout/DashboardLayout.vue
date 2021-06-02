@@ -8,15 +8,19 @@
       </sidebar-link>
       <sidebar-link to="/movie/">
         <i class="nc-icon nc-button-play"></i>
-        <p>Movies</p>
+        <p>Movie</p>
       </sidebar-link>
       <sidebar-link to="/movie/detail/">
         <i class="nc-icon nc-circle-09"></i>
         <p>Movie Detail</p>
       </sidebar-link>
-      <sidebar-link to="/books/">
+      <sidebar-link to="/book/">
         <i class="nc-icon nc-notes"></i>
-        <p>Books</p>
+        <p>Book</p>
+      </sidebar-link>
+      <sidebar-link to="/book/detail/">
+        <i class="nc-icon nc-notes"></i>
+        <p>Book Detail</p>
       </sidebar-link>
       <sidebar-link to="/analysis/">
         <i class="nc-icon nc-bell-55"></i>
@@ -26,6 +30,10 @@
         <i class="nc-icon nc-paper-2"></i>
         <p>Analysis Detail</p>
       </sidebar-link>
+      <sidebar-link to="/comment/">
+        <i class="nc-icon nc-bell-55"></i>
+        <p>Comment</p>
+      </sidebar-link>
       <sidebar-link to="/icons/">
         <i class="nc-icon nc-atom"></i>
         <p>Icons</p>
@@ -33,10 +41,6 @@
       <sidebar-link to="/notifications/">
         <i class="nc-icon nc-bell-55"></i>
         <p>Notifications</p>
-      </sidebar-link>
-      <sidebar-link to="/comment/">
-        <i class="nc-icon nc-bell-55"></i>
-        <p>Comments</p>
       </sidebar-link>
 
       <template slot="bottom-links">

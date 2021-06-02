@@ -26,126 +26,117 @@
               <h4 class="card-title">电影详情</h4>
               <p class="card-category">The profile of the movie</p>
             </template>
-          
-            <div class="row">
-              <div class="col-md-12">
-                  <div class="form-group row">
-                  <label class="col-sm-2 col-form-label movie-detail-label">Genre</label>
-                  <div class="col-sm-10">
-                    <input type="text" readonly class="form-control-plaintext movie-detail-input" :value="movieData.genre">
-                  </div>
-                </div>
-              </div>
-            </div>
 
             <div class="row">
+              
               <div class="col-md-12">
                   <div class="form-group row">
-                  <label class="col-sm-2 col-form-label movie-detail-label">Pub Date</label>
+                  <label class="col-sm-2 col-form-label detail-label">Name</label>
                   <div class="col-sm-10">
-                    <input type="text" readonly class="form-control-plaintext movie-detail-input" :value="movieData.pub_date">
+                    <input type="text" readonly class="form-control-plaintext detail-input" :value="movieData.name">
                   </div>
                 </div>
               </div>
-            </div>
 
-            <div class="row">
               <div class="col-md-12">
                   <div class="form-group row">
-                  <label class="col-sm-2 col-form-label movie-detail-label">Rating</label>
+                  <label class="col-sm-2 col-form-label detail-label">Genre</label>
                   <div class="col-sm-10">
-                    <input type="text" readonly class="form-control-plaintext movie-detail-input" :value="movieData.rating_val">
+                    <input type="text" readonly class="form-control-plaintext detail-input" :value="movieData.genre">
                   </div>
                 </div>
               </div>
-            </div>
 
-            <div class="row">
               <div class="col-md-12">
                   <div class="form-group row">
-                  <label class="col-sm-2 col-form-label movie-detail-label">IMDb</label>
+                  <label class="col-sm-2 col-form-label detail-label">Pub Date</label>
                   <div class="col-sm-10">
-                    <input type="text" readonly class="form-control-plaintext movie-detail-input" :value="movieData.imdb">
+                    <input type="text" readonly class="form-control-plaintext detail-input" :value="movieData.pub_date">
                   </div>
                 </div>
               </div>
-            </div>
 
-            <div class="row">
               <div class="col-md-12">
                   <div class="form-group row">
-                  <label class="col-sm-2 col-form-label movie-detail-label">Region</label>
+                  <label class="col-sm-2 col-form-label detail-label">Rating</label>
                   <div class="col-sm-10">
-                    <input type="text" readonly class="form-control-plaintext movie-detail-input" :value="movieData.region">
+                    <input type="text" readonly class="form-control-plaintext detail-input" :value="movieData.rating_val">
                   </div>
                 </div>
               </div>
-            </div>
 
-            <div class="row">
               <div class="col-md-12">
                   <div class="form-group row">
-                  <label class="col-sm-2 col-form-label movie-detail-label">Language</label>
+                  <label class="col-sm-2 col-form-label detail-label">IMDb</label>
                   <div class="col-sm-10">
-                    <input type="text" readonly class="form-control-plaintext movie-detail-input" :value="movieData.language">
+                    <input type="text" readonly class="form-control-plaintext detail-input" :value="movieData.imdb">
                   </div>
                 </div>
               </div>
-            </div>
 
-            <div class="row">
               <div class="col-md-12">
                   <div class="form-group row">
-                  <label class="col-sm-2 col-form-label movie-detail-label">Director</label>
+                  <label class="col-sm-2 col-form-label detail-label">Region</label>
                   <div class="col-sm-10">
-                    <input type="text" readonly class="form-control-plaintext movie-detail-input" :value="movieData.director">
+                    <input type="text" readonly class="form-control-plaintext detail-input" :value="movieData.region">
                   </div>
                 </div>
               </div>
-            </div>
 
-            <div class="row">
               <div class="col-md-12">
                   <div class="form-group row">
-                  <label class="col-sm-2 col-form-label movie-detail-label">Author</label>
+                  <label class="col-sm-2 col-form-label detail-label">Language</label>
                   <div class="col-sm-10">
-                    <input type="text" readonly class="form-control-plaintext movie-detail-input" :value="movieData.author">
+                    <input type="text" readonly class="form-control-plaintext detail-input" :value="movieData.language">
                   </div>
                 </div>
               </div>
-            </div>
 
-            <div class="row">
               <div class="col-md-12">
                   <div class="form-group row">
-                  <label class="col-sm-2 col-form-label movie-detail-label">Actor</label>
+                  <label class="col-sm-2 col-form-label detail-label">Director</label>
                   <div class="col-sm-10">
-                    <textarea type="text" readonly class="form-control-plaintext movie-detail-input" :value="movieData.actor" rows="8"></textarea>
+                    <input type="text" readonly class="form-control-plaintext detail-input" :value="movieData.director">
                   </div>
                 </div>
               </div>
-            </div>
 
-            <div class="row">
               <div class="col-md-12">
                   <div class="form-group row">
-                  <label class="col-sm-2 col-form-label movie-detail-label">Alias</label>
+                  <label class="col-sm-2 col-form-label detail-label">Author</label>
                   <div class="col-sm-10">
-                    <textarea type="text" readonly class="form-control-plaintext movie-detail-input" :value="movieData.alias" rows="2"></textarea>
+                    <input type="text" readonly class="form-control-plaintext detail-input" :value="movieData.author">
                   </div>
                 </div>
               </div>
-            </div>
 
-            <div class="row">
               <div class="col-md-12">
                   <div class="form-group row">
-                  <label class="col-sm-2 col-form-label movie-detail-label">Douban</label>
+                  <label class="col-sm-2 col-form-label detail-label">Actor</label>
                   <div class="col-sm-10">
-                    <textarea type="text" readonly class="form-control-plaintext movie-detail-input" :value="movieData.douban_url" rows="2"></textarea>
+                    <textarea type="text" readonly class="form-control-plaintext detail-input" :value="movieData.actor" rows="8"></textarea>
                   </div>
                 </div>
               </div>
+
+              <div class="col-md-12">
+                  <div class="form-group row">
+                  <label class="col-sm-2 col-form-label detail-label">Alias</label>
+                  <div class="col-sm-10">
+                    <textarea type="text" readonly class="form-control-plaintext detail-input" :value="movieData.alias" rows="2"></textarea>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-12">
+                  <div class="form-group row">
+                  <label class="col-sm-2 col-form-label detail-label">Douban</label>
+                  <div class="col-sm-10">
+                    <textarea type="text" readonly class="form-control-plaintext detail-input" :value="movieData.douban_url" rows="2"></textarea>
+                  </div>
+                </div>
+              </div>
+
             </div>
 
           </card>
@@ -208,12 +199,12 @@
 
 </script>
 <style type="text/css">
-  .movie-detail-label{
+  .detail-label{
     line-height: 24px;
     margin-bottom: 0!important;
   }
 
-  .movie-detail-input {
+  .detail-input {
     border-width: 1px!important;
     padding: 6px 10px;
     border-color: #eee;

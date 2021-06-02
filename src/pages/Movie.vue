@@ -193,7 +193,7 @@
         // const color = Math.floor((Math.random() * 4) + 1)
         this.$notifications.notify(
           {
-            message: '<span>您的提交的请求：<b>' + this.doubanId + '</b> 已发送后台处理 <a href="http://localhost:6800/jobs">点击查看任务状态</a></span>',
+            message: '<span>您提交的 添加/修改 请求：<b>' + this.doubanId + '</b> 已发送后台处理 <a href="http://localhost:6800/jobs">点击查看任务状态</a></span>',
             icon: 'nc-icon nc-app',
             horizontalAlign: horizontalAlign,
             verticalAlign: verticalAlign,

@@ -3,50 +3,50 @@
     <side-bar>
       <mobile-menu slot="content"></mobile-menu>
       <sidebar-link to="/overview/">
-        <i class="nc-icon nc-chart-pie-35"></i>
+        <i class="fa fa-tachometer"></i>
         <p>Dashboard</p>
       </sidebar-link>
       <sidebar-link to="/movie/">
-        <i class="nc-icon nc-button-play"></i>
+        <i class="fa fa-film"></i>
         <p>Movie</p>
       </sidebar-link>
       <sidebar-link to="/movie/detail/">
-        <i class="nc-icon nc-circle-09"></i>
+        <i class="fa fa-film"></i>
         <p>Movie Detail</p>
       </sidebar-link>
       <sidebar-link to="/book/">
-        <i class="nc-icon nc-notes"></i>
+        <i class="fa fa-newspaper-o"></i>
         <p>Book</p>
       </sidebar-link>
       <sidebar-link to="/book/detail/">
-        <i class="nc-icon nc-notes"></i>
+        <i class="fa fa-newspaper-o"></i>
         <p>Book Detail</p>
       </sidebar-link>
       <sidebar-link to="/analysis/">
-        <i class="nc-icon nc-bell-55"></i>
+        <i class="fa fa-file-text-o"></i>
         <p>Analysis</p>
       </sidebar-link>
       <sidebar-link to="/analysis/detail/">
-        <i class="nc-icon nc-paper-2"></i>
+        <i class="fa fa-file-text-o"></i>
         <p>Analysis Detail</p>
       </sidebar-link>
       <sidebar-link to="/comment/">
-        <i class="nc-icon nc-bell-55"></i>
+        <i class="fa fa-comments-o"></i>
         <p>Comment</p>
       </sidebar-link>
       <sidebar-link to="/icons/">
-        <i class="nc-icon nc-atom"></i>
+        <i class="fa fa-diamond"></i>
         <p>Icons</p>
       </sidebar-link>
       <sidebar-link to="/notifications/">
-        <i class="nc-icon nc-bell-55"></i>
+        <i class="fa fa-bell-o"></i>
         <p>Notifications</p>
       </sidebar-link>
 
       <template slot="bottom-links">
         <sidebar-link class="active"
                       to="/upgrade">
-          <i class="nc-icon nc-alien-33"></i>
+          <i class="fa fa-superpowers"></i>
           <p>Upgrade to PRO</p>
         </sidebar-link>
       </template>

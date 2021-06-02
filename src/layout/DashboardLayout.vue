@@ -2,41 +2,41 @@
   <div class="wrapper">
     <side-bar>
       <mobile-menu slot="content"></mobile-menu>
-      <sidebar-link to="/overview">
+      <sidebar-link to="/overview/">
         <i class="nc-icon nc-chart-pie-35"></i>
         <p>Dashboard</p>
       </sidebar-link>
-      <sidebar-link to="/moviedetail">
-        <i class="nc-icon nc-circle-09"></i>
-        <p>Movie Detail</p>
-      </sidebar-link>
-      <sidebar-link to="/movies">
+      <sidebar-link to="/movie/">
         <i class="nc-icon nc-button-play"></i>
         <p>Movies</p>
       </sidebar-link>
-      <sidebar-link to="/books">
+      <sidebar-link to="/movie/detail/">
+        <i class="nc-icon nc-circle-09"></i>
+        <p>Movie Detail</p>
+      </sidebar-link>
+      <sidebar-link to="/books/">
         <i class="nc-icon nc-notes"></i>
         <p>Books</p>
       </sidebar-link>
-      <sidebar-link to="/analysis/detail">
+      <sidebar-link to="/analysis/">
+        <i class="nc-icon nc-bell-55"></i>
+        <p>Analysis</p>
+      </sidebar-link>
+      <sidebar-link to="/analysis/detail/">
         <i class="nc-icon nc-paper-2"></i>
         <p>Analysis Detail</p>
       </sidebar-link>
-      <sidebar-link to="/icons">
+      <sidebar-link to="/icons/">
         <i class="nc-icon nc-atom"></i>
         <p>Icons</p>
       </sidebar-link>
-      <sidebar-link to="/notifications">
+      <sidebar-link to="/notifications/">
         <i class="nc-icon nc-bell-55"></i>
         <p>Notifications</p>
       </sidebar-link>
-      <sidebar-link to="/comments">
+      <sidebar-link to="/comments/">
         <i class="nc-icon nc-bell-55"></i>
         <p>Comments</p>
-      </sidebar-link>
-      <sidebar-link to="/analysis">
-        <i class="nc-icon nc-bell-55"></i>
-        <p>Analysis</p>
       </sidebar-link>
 
       <template slot="bottom-links">

@@ -49,7 +49,7 @@
                 <td>{{ movie.name }}</td>
                 <td>{{ movie.genre }}</td>
                 <td>{{ movie.rating_val }}</td>
-                <td>Test</td>
+                <td><button @click="getDetail(movie.id)">detail</button></td>
               </tr>
             </tbody>
           </table>
@@ -103,19 +103,24 @@
     },
     data () {
       return {
-        movieApi: 'http://127.0.0.1:8000/douban/movie/?ordering=-create_date&page=1',
+        movieApi: 'http://127.0.0.1:8000/douban/movie/',
         movieList: {},
         nextUrl: null,
         prevUrl: null,
         numMovie: 0,
         numPage: 0,
+        nowPage: 1,
       }
     },
     methods: {
       getAll() {
-        axios.get(this.movieApi)
+        axios.get(this.movieApi, {
+          params: {
+            ordering: '-create_date',
+            page: this.nowPage
+          }
+        })
           .then(res => {
-            this.movieData = res.data;
             this.movieList = res.data.results;
             this.numMovie = res.data.count;
             this.prevUrl = res.data.previous;
@@ -124,17 +129,25 @@
           });
       },
       getNextPage() {
-        this.movieApi = this.nextUrl;
+        this.nowPage += 1;
         this.getAll();
       },
       getPreviousPage() {
-        this.movieApi = this.prevUrl;
+        this.nowPage -= 1;
         this.getAll();
+      },
+      getDetail(movieId) {
+        this.$router.push({
+          path: '/movie/detail/',
+          query: {
+            movie_id: movieId
+          }
+        })
       }
     },
     mounted() {
       this.getAll();
-      console.log(this.numPage);
+      // console.log(this.numPage);
     }
   }
 </script>

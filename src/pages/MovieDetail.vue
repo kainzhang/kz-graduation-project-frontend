@@ -165,21 +165,28 @@
     },
     data () {
       return {
-        movieApi: 'http://localhost:8000/douban/movie/1307694/',
+        movieApi: 'http://localhost:8000/douban/movie/',
+        mediaUrl: 'http://localhost:8000/media/img/',
         movieData: {},
         movieCover: null,
-        movieId: '1307694',
+        movieId: '',
       }
     },
     methods: {
-
+      getMovieDetail(movieId) {
+        axios.get(this.movieApi, {
+          params: {
+            search: movieId
+          }
+        }).then(res => {
+          this.movieData = res.data.results[0];
+          this.movieCover = this.mediaUrl + movieId + '.jpg'
+        })
+      }
     },
     mounted() {
-      axios.get(this.movieApi).then(res => {
-        this.movieData = res.data;
-        this.movieCover = 'http://localhost:8000/media/img/'+ this.movieId + '.jpg'
-        console.log(this.movieData)
-      })
+      this.movieId = this.$route.query.movie_id;
+      this.getMovieDetail(this.movieId)
     }
   }
 

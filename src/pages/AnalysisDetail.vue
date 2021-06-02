@@ -18,46 +18,48 @@
               <div style="float: left; width: 70%; padding-left: 10px">
               
                 <div class="form-group row">
-                  <label class="col-sm-3 col-form-label">Name:</label>
+                  <label class="col-sm-3 col-form-label">NAME:</label>
                   <div class="col-sm-9">
                     <input type="text" readonly class="form-control-plaintext" :value="itemData.name">
                   </div>
                 </div>
 
                 <div class="form-group row">
-                  <label class="col-sm-3 col-form-label">Genre:</label>
+                  <label class="col-sm-3 col-form-label">GENRE:</label>
                   <div class="col-sm-9">
                     <input type="text" readonly class="form-control-plaintext" :value="itemData.genre">
                   </div>
                 </div>
 
                 <div class="form-group row">
-                  <label class="col-sm-3 col-form-label">Director:</label>
+                  <label class="col-sm-3 col-form-label">DIRECTOR:</label>
                   <div class="col-sm-9">
                     <input type="text" readonly class="form-control-plaintext" :value="itemData.director">
                   </div>
                 </div>
 
                 <div class="form-group row">
-                  <label class="col-sm-3 col-form-label">Region:</label>
-                  <div class="col-sm-9">
-                    <input type="text" readonly class="form-control-plaintext" :value="itemData.region">
-                  </div>
-                </div>
-
-                 <div class="form-group row">
-                  <label class="col-sm-3 col-form-label">Pub Date:</label>
-                  <div class="col-sm-9">
-                    <input type="text" readonly class="form-control-plaintext" :value="itemData.pub_date">
-                  </div>
-                </div>
-
-                <div class="form-group row">
-                  <label class="col-sm-3 col-form-label">Rating:</label>
+                  <label class="col-sm-3 col-form-label">RATING:</label>
                   <div class="col-sm-9">
                     <input type="text" readonly class="form-control-plaintext" :value="itemData.rating_val">
                   </div>
                 </div>
+
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label">CMT NUM:</label>
+                  <div class="col-sm-9">
+                    <input type="text" readonly class="form-control-plaintext" :value="chartData.comment_num">
+                  </div>
+                </div>
+
+                 <div class="form-group row">
+                  <label class="col-sm-3 col-form-label">POS RATE:</label>
+                  <div class="col-sm-9">
+                    <input type="text" readonly class="form-control-plaintext" :value="chartData.pos_rate">
+                  </div>
+                </div>
+
+                
               </div>
               
               <a :href="itemData.douban_url" class="btn btn-primary btn-sm active analysis-btn" role="button" aria-pressed="true">Comments</a>
@@ -550,7 +552,8 @@ export default {
         } else if (this.chartData.dad_type == 2) {
           this.getBookDetail(this.chartData.dad_id);
         }
-        console.log(this.chartData)
+        // console.log(this.chartData)
+        this.chartData.pos_rate = this.chartData.pos_rate.toFixed(6)
         this.commentNum = this.chartData.comment_num;
         
         this.itemId = this.chartData.dad_id;

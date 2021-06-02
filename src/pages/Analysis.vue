@@ -100,10 +100,10 @@
       },
       getDetail(analysisId) {
         this.$router.push({
-            path:'/analysis/detail',
-            query: {
-                analysis_id: analysisId
-            }
+          path: '/analysis/detail/',
+          query: {
+            analysis_id: analysisId
+          }
         })
       }
 

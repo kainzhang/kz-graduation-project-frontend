@@ -4,7 +4,7 @@ import NotFound from '../pages/NotFoundPage.vue'
 
 // Admin pages
 import Overview from 'src/pages/Overview.vue'
-import Movies from 'src/pages/Movies.vue'
+import Movie from 'src/pages/Movie.vue'
 import MovieDetail from 'src/pages/MovieDetail.vue'
 import Books from 'src/pages/Books.vue'
 import Analysis from 'src/pages/Analysis.vue'
@@ -26,52 +26,52 @@ const routes = [
     redirect: '/overview',
     children: [
       {
-        path: 'overview',
+        path: 'overview/',
         name: 'Overview',
         component: Overview
       },
       {
-        path: 'moviedetail',
-        name: 'Movie Detail',
-        component: MovieDetail
-      },
-      {
-        path: 'books',
+        path: 'books/',
         name: 'Books',
         component: Books
       },
       {
-        path: 'analysis/detail',
-        name: 'Analysis Detail',
-        component: AnalysisDetail
-      },
-      {
-        path: 'icons',
-        name: 'Icons',
-        component: Icons
-      },
-      {
-        path: 'movies',
-        name: 'Movies',
-        component: Movies
-      },
-      {
-        path: 'notifications',
-        name: 'Notifications',
-        component: Notifications
-      },
-      {
-        path: 'comments',
-        name: 'comments',
-        component: Comments
-      },
-      {
-        path: 'analysis',
+        path: 'analysis/',
         name: 'Analysis',
         component: Analysis
       },
       {
-        path: 'upgrade',
+        path: 'analysis/detail/',
+        name: 'Analysis Detail',
+        component: AnalysisDetail
+      },
+      {
+        path: 'icons/',
+        name: 'Icons',
+        component: Icons
+      },
+      {
+        path: 'movie/',
+        name: 'Movie',
+        component: Movie
+      },
+      {
+        path: 'movie/detail/',
+        name: 'Movie Detail',
+        component: MovieDetail
+      },
+      {
+        path: 'notifications/',
+        name: 'Notifications',
+        component: Notifications
+      },
+      {
+        path: 'comments/',
+        name: 'comments',
+        component: Comments
+      },
+      {
+        path: 'upgrade/',
         name: 'Upgrade to PRO',
         component: Upgrade
       }

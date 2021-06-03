@@ -69,18 +69,25 @@
               <tr>
                 <th scope="col">ID</th>
                 <th scope="col">NAME</th>
-                <th scope="col">AUTHOR</th>
                 <th scope="col">RATING</th>
+                <th scope="col">UPDATE DATE</th>
                 <th scope="col">OPERATION</th>
               </tr>
             </thead>
             <tbody>
               <tr v-for="book in bookList" :key="book.url">
                 <td><a :href=book.douban_url>{{ book.id }}</a></td>
-                <td>{{ book.name }}</td>
-                <td>{{ book.author }}</td>
+                <td>
+                  {{ book.name }}
+                  <i v-if="book.analyzed==true" class="fa fa-check text-success"></i>
+                  <i v-else class="fa fa-times text-danger"></i>
+                </td>
                 <td>{{ book.rating_val }}</td>
-                <td><button @click="getDetail(book.id)">detail</button></td>
+                <td>{{ formatDate(book.create_date) }}</td>
+                <td>
+                  <a @click="toDetail(book.id)" class="table-btn btn btn-b btn-round btn-fill btn-default">detail</a>
+                  <a @click="toAnalyze(book.id)"  class="table-btn btn btn-round btn-fill btn-success">analyze</a>
+                </td>
               </tr>
             </tbody>
           </table>
@@ -108,6 +115,7 @@
           topCenter: false
         },
         bookApi: 'http://127.0.0.1:8000/douban/book/',
+        analysisApi: 'http://localhost:8000/douban/item_analysis/',
         bookList: {},
         nextUrl: null,
         prevUrl: null,
@@ -143,7 +151,7 @@
         this.nowPage -= 1;
         this.getAll();
       },
-      getDetail(bookId) {
+      toDetail(bookId) {
         this.$router.push({
           path: '/book/detail/',
           query: {
@@ -151,23 +159,50 @@
           }
         })
       },
+      toAnalyze(bookId) {
+        axios.post(this.analysisApi, {
+          dad_id: bookId,
+          dad_type: 2
+        }).then(() => {
+          this.notifyVue('top', 'right', '<span>您提交的 分析 请求：<b>' + bookId + '</b> 已发送后台处理</span>');
+          this.toAnalysis(bookId)
+        })
+      },
+      toAnalysis(bookId) {
+        this.$router.push({
+          path: '/analysis/',
+          query: {
+            douban_id: bookId
+          }
+        })
+      },
       insertBook() {
         axios.post(this.bookApi, {
           douban_url: 'https://book.douban.com/subject/' + this.doubanId
         }).then(() => {
-          this.notifyVue('top', 'right');
+          this.notifyVue('top', 'right', '<span>您提交的 添加/修改 请求：<b>' + this.doubanId + '</b> 已发送后台处理 <a href="http://localhost:6800/jobs">点击查看任务状态</a></span>');
         })
       },
-      notifyVue (verticalAlign, horizontalAlign) {
+      notifyVue (verticalAlign, horizontalAlign, message) {
         // const color = Math.floor((Math.random() * 4) + 1)
         this.$notifications.notify(
           {
-            message: '<span>您提交的 添加/修改 请求：<b>' + this.doubanId + '</b> 已发送后台处理 <a href="http://localhost:6800/jobs">点击查看任务状态</a></span>',
+            message: message,
             icon: 'nc-icon nc-app',
             horizontalAlign: horizontalAlign,
             verticalAlign: verticalAlign,
-            type: this.notificationType[1]
+            type: this.notificationType[2]
           })
+      },
+      formatDate(date) {
+        var date = new Date(date);
+        var YY = date.getFullYear() + '-';
+        var MM = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+        var DD = (date.getDate() < 10 ? '0' + (date.getDate()) : date.getDate());
+        var hh = (date.getHours() < 10 ? '0' + date.getHours() : date.getHours()) + ':';
+        var mm = (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()) + ':';
+        var ss = (date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds());
+        return YY + MM + DD +" "+hh + mm + ss;
       }
 
     },

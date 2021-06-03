@@ -61,8 +61,10 @@
               <tr v-for="analysis in analysisList" :key="analysis.url">
                 <td>{{ analysis.dad_id }}</td>
                 <td>{{ analysis.pos_rate.toFixed(6) }}</td>
-                <td>{{ analysis.create_date }}</td>
-                <td><button @click="getDetail(analysis.id)">detail</button></td>
+                <td>{{ formatDate(analysis.create_date) }}</td>
+                <td>
+                  <a @click="toDetail(analysis.id)" class="table-btn btn btn-b btn-round btn-fill btn-default">detail</a>
+                </td>
               </tr>
             </tbody>
           </table>
@@ -87,7 +89,6 @@
       return {
         analysisApi: 'http://localhost:8000/douban/item_analysis/',
         analysisList: {},
-        analysisDad: {},
         nextUrl: null,
         prevUrl: null,
         numAnalysis: 0,
@@ -117,13 +118,23 @@
         this.analysisApi = this.prevUrl;
         this.getAll();
       },
-      getDetail(analysisId) {
+      toDetail(analysisId) {
         this.$router.push({
           path: '/analysis/detail/',
           query: {
             analysis_id: analysisId
           }
         })
+      },
+      formatDate(date) {
+        var date = new Date(date);
+        var YY = date.getFullYear() + '-';
+        var MM = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+        var DD = (date.getDate() < 10 ? '0' + (date.getDate()) : date.getDate());
+        var hh = (date.getHours() < 10 ? '0' + date.getHours() : date.getHours()) + ':';
+        var mm = (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()) + ':';
+        var ss = (date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds());
+        return YY + MM + DD +" "+hh + mm + ss;
       }
 
     },

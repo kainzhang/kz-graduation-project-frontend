@@ -69,54 +69,30 @@
               <tr>
                 <th scope="col">ID</th>
                 <th scope="col">NAME</th>
-                <th scope="col">GENRE</th>
                 <th scope="col">RATING</th>
+                <th scope="col">UPDATE DATE</th>
                 <th scope="col">OPERATION</th>
               </tr>
             </thead>
             <tbody>
               <tr v-for="movie in movieList" :key="movie.url">
                 <td><a :href=movie.douban_url>{{ movie.id }}</a></td>
-                <td>{{ movie.name }}</td>
-                <td>{{ movie.genre }}</td>
+                <td>
+                  {{ movie.name }}
+                  <i v-if="movie.analyzed==true" class="fa fa-check text-success"></i>
+                  <i v-else class="fa fa-times text-danger"></i>
+                </td>
                 <td>{{ movie.rating_val }}</td>
-                <td><button @click="getDetail(movie.id)">detail</button></td>
+                <td>{{ formatDate(movie.create_date) }}</td>
+                <td>
+                  <a @click="toDetail(movie.id)" class="table-btn btn btn-b btn-round btn-fill btn-default">detail</a>
+                  <a @click="toAnalyze(movie.id)"  class="table-btn btn btn-round btn-fill btn-success">analyze</a>
+                </td>
               </tr>
             </tbody>
           </table>
           </card>
         </div>
-
-        <!-- <div class="col-12">
-          <card class="card-plain">
-            <template slot="header">
-              <h4 class="card-title">Table on Plain Background</h4>
-              <p class="card-category">Here is a subtitle for this table</p>
-            </template>
-            <div class="table-responsive">
-              <l-table class="table-hover"
-                       :columns="tableColumns"
-                       :data="tableData">
-              </l-table>
-            </div>
-          </card>
-        </div>
-
-        <div class="col-12">
-          <card class="strpied-tabled-with-hover"
-                body-classes="table-full-width table-responsive"
-          >
-            <template slot="header">
-              <h4 class="card-title">Small table</h4>
-              <p class="card-category">Here is a subtitle for this table</p>
-            </template>
-            <l-table class="table-hover table-striped table-sm"
-                     :columns="tableColumns"
-                     :data="tableData">
-            </l-table>
-          </card>
-
-        </div> -->
 
       </div>
     </div>
@@ -139,6 +115,7 @@
           topCenter: false
         },
         movieApi: 'http://127.0.0.1:8000/douban/movie/',
+        analysisApi: 'http://localhost:8000/douban/item_analysis/',
         movieList: {},
         nextUrl: null,
         prevUrl: null,
@@ -174,7 +151,7 @@
         this.nowPage -= 1;
         this.getAll();
       },
-      getDetail(movieId) {
+      toDetail(movieId) {
         this.$router.push({
           path: '/movie/detail/',
           query: {
@@ -182,23 +159,50 @@
           }
         })
       },
+      toAnalyze(movieId) {
+        axios.post(this.analysisApi, {
+          dad_id: movieId,
+          dad_type: 1
+        }).then(() => {
+          this.notifyVue('top', 'right', '<span>您提交的 分析 请求：<b>' + movieId + '</b> 已发送后台处理</span>');
+          this.toAnalysis(movieId)
+        })
+      },
+      toAnalysis(movieId) {
+        this.$router.push({
+          path: '/analysis/',
+          query: {
+            douban_id: movieId
+          }
+        })
+      },
       insertMovie() {
         axios.post(this.movieApi, {
           douban_url: 'https://movie.douban.com/subject/' + this.doubanId
         }).then(() => {
-          this.notifyVue('top', 'right');
+          this.notifyVue('top', 'right', '<span>您提交的 添加/修改 请求：<b>' + this.doubanId + '</b> 已发送后台处理 <a href="http://localhost:6800/jobs">点击查看任务状态</a></span>');
         })
       },
-      notifyVue (verticalAlign, horizontalAlign) {
+      notifyVue(verticalAlign, horizontalAlign, message) {
         // const color = Math.floor((Math.random() * 4) + 1)
         this.$notifications.notify(
           {
-            message: '<span>您提交的 添加/修改 请求：<b>' + this.doubanId + '</b> 已发送后台处理 <a href="http://localhost:6800/jobs">点击查看任务状态</a></span>',
+            message: message,
             icon: 'nc-icon nc-app',
             horizontalAlign: horizontalAlign,
             verticalAlign: verticalAlign,
-            type: this.notificationType[1]
+            type: this.notificationType[2]
           })
+      },
+      formatDate(date) {
+        var date = new Date(date);
+        var YY = date.getFullYear() + '-';
+        var MM = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+        var DD = (date.getDate() < 10 ? '0' + (date.getDate()) : date.getDate());
+        var hh = (date.getHours() < 10 ? '0' + date.getHours() : date.getHours()) + ':';
+        var mm = (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()) + ':';
+        var ss = (date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds());
+        return YY + MM + DD +" "+hh + mm + ss;
       }
 
     },
@@ -212,5 +216,12 @@
     margin-top: 32px;
     line-height: 20px;
     width: 100px;
+  }
+
+  .table-btn {
+    line-height: 16px;
+    font-size: 14px;
+    width: 90px;
+    margin-right: 15px;
   }
 </style>

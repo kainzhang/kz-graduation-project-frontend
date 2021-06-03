@@ -65,11 +65,10 @@
                   </div>
                 </div>
 
-                
               </div>
               
-              <a @click="toComment()" class="btn btn-primary btn-sm active analysis-btn" role="button" aria-pressed="true">Comments</a>
-              <a @click="toDetail()" class="btn btn-success btn-sm active analysis-btn" role="button" aria-pressed="true">Detail</a>
+              <a @click="toComment()" class="analysis-btn btn btn-b btn-round btn-fill btn-success" role="button" aria-pressed="true">Comments</a>
+              <a @click="toDetail()" class="analysis-btn btn btn-b btn-round btn-fill btn-default" role="button" aria-pressed="true">Detail</a>
 
             </div>
             
@@ -642,6 +641,8 @@ export default {
   .analysis-btn {
     float: right;
     margin-right: 15px;
+    line-height: 16px;
+    max-width: 120px;
   }
 
 

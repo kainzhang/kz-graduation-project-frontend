@@ -13,9 +13,9 @@
               {{ movieData.description }}
             </p>
             <div slot="footer" class="text-center d-flex justify-content-center">
-              <a href="#" class="btn btn-simple" @click="getMovieAnalysis()">Analysis</a>
+              <a href="#" class="btn btn-simple" @click="toAnalysis()">Analysis</a>
               <a href="#" class="btn btn-simple">|</a>
-              <a href="#" class="btn btn-simple" @click="getMovieComment()">Comments</a>
+              <a href="#" class="btn btn-simple" @click="toComment()">Comments</a>
             </div>
           </card>
         </div>
@@ -174,7 +174,7 @@
           this.movieCover = this.mediaUrl + this.movieId + '.jpg'
         })
       },
-      getMovieComment() {
+      toComment() {
         this.$router.push({
           path: '/comment/',
           query: {
@@ -182,7 +182,7 @@
           }
         })
       },
-      getMovieAnalysis() {
+      toAnalysis() {
         this.$router.push({
           path: '/analysis/',
           query: {

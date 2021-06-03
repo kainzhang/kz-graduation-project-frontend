@@ -42,6 +42,10 @@
         <i class="fa fa-bell-o"></i>
         <p>Notifications</p>
       </sidebar-link>
+      <sidebar-link to="/typography/">
+        <i class="fa fa-bell-o"></i>
+        <p>Typography</p>
+      </sidebar-link>
 
       <template slot="bottom-links">
         <sidebar-link class="active"

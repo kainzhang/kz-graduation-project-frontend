@@ -14,6 +14,7 @@ import Comment from 'src/pages/Comment.vue'
 import Icons from 'src/pages/Icons.vue'
 import Notifications from 'src/pages/Notifications.vue'
 import Upgrade from 'src/pages/Upgrade.vue'
+import Typography from 'src/pages/trashbin/Typography.vue'
 
 const routes = [
   {
@@ -75,6 +76,11 @@ const routes = [
         path: 'comment/',
         name: 'comment',
         component: Comment
+      },
+      {
+        path: 'typography/',
+        name: 'typography',
+        component: Typography
       },
       {
         path: 'upgrade/',

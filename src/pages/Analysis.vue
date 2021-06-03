@@ -71,6 +71,18 @@
           </card>
         </div>
 
+        <div class="col-12">
+          <card class="strpied-tabled-with-hover"
+                body-classes="table-full-width table-responsive"
+          >
+            <small class="table-small-text" >
+              &nbsp;&nbsp;{{ numAnalysis }} analyses in the database;
+              &nbsp;&nbsp;Total Pages: {{ numPage }};
+              &nbsp;&nbsp;Now at: {{ nowPage }}
+            </small>
+          </card>
+        </div>
+
       </div>
     </div>
   </div>
@@ -93,6 +105,7 @@
         prevUrl: null,
         numAnalysis: 0,
         numPage: 0,
+        nowPage: 1,
         dadId: '',
       }
     },
@@ -100,7 +113,8 @@
       getAll() {
         axios.get(this.analysisApi, {
           params: {
-            search: this.dadId
+            search: this.dadId,
+            page: this.nowPage
           }
         }).then(res => {
           this.analysisList = res.data.results;
@@ -111,11 +125,11 @@
         });
       },
       getNextPage() {
-        this.analysisApi = this.nextUrl;
+        this.nowPage += 1;
         this.getAll();
       },
       getPreviousPage() {
-        this.analysisApi = this.prevUrl;
+        this.nowPage -= 1;
         this.getAll();
       },
       toDetail(analysisId) {

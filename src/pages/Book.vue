@@ -94,6 +94,18 @@
           </card>
         </div>
 
+        <div class="col-12">
+          <card class="strpied-tabled-with-hover"
+                body-classes="table-full-width table-responsive"
+          >
+            <small class="table-small-text" >
+              &nbsp;&nbsp;{{ numBook }} books in the database;
+              &nbsp;&nbsp;Total Pages: {{ numPage }};
+              &nbsp;&nbsp;Now at: {{ nowPage }}
+            </small>
+          </card>
+        </div>
+
       </div>
     </div>
   </div>

@@ -70,36 +70,17 @@
           </card>
         </div>
 
-        <!-- <div class="col-12">
-          <card class="card-plain">
-            <template slot="header">
-              <h4 class="card-title">Table on Plain Background</h4>
-              <p class="card-category">Here is a subtitle for this table</p>
-            </template>
-            <div class="table-responsive">
-              <l-table class="table-hover"
-                       :columns="tableColumns"
-                       :data="tableData">
-              </l-table>
-            </div>
-          </card>
-        </div>
-
         <div class="col-12">
           <card class="strpied-tabled-with-hover"
                 body-classes="table-full-width table-responsive"
           >
-            <template slot="header">
-              <h4 class="card-title">Small table</h4>
-              <p class="card-category">Here is a subtitle for this table</p>
-            </template>
-            <l-table class="table-hover table-striped table-sm"
-                     :columns="tableColumns"
-                     :data="tableData">
-            </l-table>
+            <small class="table-small-text" >
+              &nbsp;&nbsp;{{ numComment }} comments in the database;
+              &nbsp;&nbsp;Total Pages: {{ numPage }};
+              &nbsp;&nbsp;Now at: {{ nowPage }}
+            </small>
           </card>
-
-        </div> -->
+        </div>
 
       </div>
     </div>
@@ -123,6 +104,7 @@
         prevUrl: null,
         numComment: 0,
         numPage: 0,
+        nowPage: 1,
         dadId: ''
       }
     },
@@ -130,7 +112,8 @@
       getAll() {
         axios.get(this.commentApi, {
           params: {
-            search: this.dadId
+            search: this.dadId,
+            page: this.nowPage
           }
         }).then(res => {
           this.commentList = res.data.results;
@@ -141,11 +124,11 @@
         });
       },
       getNextPage() {
-        this.commentApi = this.nextUrl;
+        this.nowPage += 1;
         this.getAll();
       },
       getPreviousPage() {
-        this.commentApi = this.prevUrl;
+        this.nowPage -= 1;
         this.getAll();
       }
     },

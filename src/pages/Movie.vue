@@ -94,6 +94,18 @@
           </card>
         </div>
 
+        <div class="col-12">
+          <card class="strpied-tabled-with-hover"
+                body-classes="table-full-width table-responsive"
+          >
+            <small class="table-small-text" >
+              &nbsp;&nbsp;{{ numMovie }} movies in the database;
+              &nbsp;&nbsp;Total Pages: {{ numPage }};
+              &nbsp;&nbsp;Now at: {{ nowPage }}
+            </small>
+          </card>
+        </div>
+
       </div>
     </div>
   </div>
@@ -223,5 +235,12 @@
     font-size: 14px;
     width: 90px;
     margin-right: 15px;
+  }
+
+  .table-small-text {
+    display: block;
+    float: left;
+    padding: 0 0 5px 10px;
+    color: #666;
   }
 </style>

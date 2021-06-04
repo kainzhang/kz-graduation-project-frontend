@@ -13,7 +13,7 @@
               {{ movieData.description }}
             </p>
             <div slot="footer" class="text-center d-flex justify-content-center">
-              <a href="#" class="btn btn-simple" @click="toAnalysis()">Analysis</a>
+              <a href="#" class="btn btn-simple" @click="toAnalysis()">Analyses</a>
               <a href="#" class="btn btn-simple">|</a>
               <a href="#" class="btn btn-simple" @click="toComment()">Comments</a>
             </div>

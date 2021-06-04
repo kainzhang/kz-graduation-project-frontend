@@ -10,9 +10,9 @@
             </div>
             <hr>
             <div slot="footer" class="text-center d-flex justify-content-center">
-              <a href="#" class="btn btn-simple" @click="getBookAnalysis()">Analysis</a>
+              <a href="#" class="btn btn-simple" @click="toBookAnalysis()">Analyses</a>
               <a href="#" class="btn btn-simple">|</a>
-              <a href="#" class="btn btn-simple" @click="getBookComment()">Comments</a>
+              <a href="#" class="btn btn-simple" @click="toBookComment()">Comments</a>
             </div>
           </card>
         </div>
@@ -187,7 +187,7 @@
           this.bookCover = this.mediaUrl + this.bookId + '.jpg'
         })
       },
-      getBookComment() {
+      toBookComment() {
         this.$router.push({
           path: '/comment/',
           query: {
@@ -195,7 +195,7 @@
           }
         })
       },
-      getBookAnalysis() {
+      toBookAnalysis() {
         this.$router.push({
           path: '/analysis/',
           query: {

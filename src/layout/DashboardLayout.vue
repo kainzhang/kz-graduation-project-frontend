@@ -10,48 +10,48 @@
         <i class="fa fa-film"></i>
         <p>Movie</p>
       </sidebar-link>
-      <sidebar-link to="/movie/detail/">
+      <!-- <sidebar-link to="/movie/detail/">
         <i class="fa fa-film"></i>
         <p>Movie Detail</p>
-      </sidebar-link>
+      </sidebar-link> -->
       <sidebar-link to="/book/">
         <i class="fa fa-newspaper-o"></i>
         <p>Book</p>
       </sidebar-link>
-      <sidebar-link to="/book/detail/">
+      <!-- <sidebar-link to="/book/detail/">
         <i class="fa fa-newspaper-o"></i>
         <p>Book Detail</p>
-      </sidebar-link>
+      </sidebar-link> -->
       <sidebar-link to="/analysis/">
         <i class="fa fa-file-text-o"></i>
         <p>Analysis</p>
       </sidebar-link>
-      <sidebar-link to="/analysis/detail/">
+      <!-- <sidebar-link to="/analysis/detail/">
         <i class="fa fa-file-text-o"></i>
         <p>Analysis Detail</p>
-      </sidebar-link>
+      </sidebar-link> -->
       <sidebar-link to="/comment/">
         <i class="fa fa-comments-o"></i>
         <p>Comment</p>
       </sidebar-link>
-      <sidebar-link to="/icons/">
+      <!-- <sidebar-link to="/icons/">
         <i class="fa fa-diamond"></i>
         <p>Icons</p>
-      </sidebar-link>
+      </sidebar-link> -->
       <sidebar-link to="/notifications/">
         <i class="fa fa-bell-o"></i>
         <p>Notifications</p>
       </sidebar-link>
-      <sidebar-link to="/typography/">
+      <!-- <sidebar-link to="/typography/">
         <i class="fa fa-bell-o"></i>
         <p>Typography</p>
-      </sidebar-link>
+      </sidebar-link> -->
 
       <template slot="bottom-links">
         <sidebar-link class="active"
                       to="/upgrade">
           <i class="fa fa-superpowers"></i>
-          <p>Upgrade to PRO</p>
+          <p>Administration</p>
         </sidebar-link>
       </template>
     </side-bar>

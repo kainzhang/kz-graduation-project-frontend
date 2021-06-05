@@ -15,12 +15,25 @@ import Icons from 'src/pages/Icons.vue'
 import Notifications from 'src/pages/Notifications.vue'
 import Upgrade from 'src/pages/Upgrade.vue'
 import Typography from 'src/pages/trashbin/Typography.vue'
+import Login from 'src/pages/Login.vue'
 
 const routes = [
   {
     path: '/',
     component: DashboardLayout,
     redirect: '/overview'
+  },
+  {
+    path: '/',
+    component: Login,
+    redirect: '/login',
+    children: [
+      {
+        path: 'login/',
+        name: 'Login',
+        component: Login,
+      }
+    ]
   },
   {
     path: '/',

@@ -24,16 +24,8 @@ const routes = [
     redirect: '/overview'
   },
   {
-    path: '/',
-    component: Login,
-    redirect: '/login',
-    children: [
-      {
-        path: 'login/',
-        name: 'Login',
-        component: Login,
-      }
-    ]
+    path: '/login',
+    component: Login
   },
   {
     path: '/',

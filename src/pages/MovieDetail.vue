@@ -13,9 +13,9 @@
               {{ movieData.description }}
             </p>
             <div slot="footer" class="text-center d-flex justify-content-center">
-              <a href="#" class="btn btn-simple" @click="toAnalysis()">Analyses</a>
-              <a href="#" class="btn btn-simple">|</a>
-              <a href="#" class="btn btn-simple" @click="toComment()">Comments</a>
+              <a class="btn btn-simple" @click="toAnalysis()">Analyses</a>
+              <a class="btn btn-simple">|</a>
+              <a class="btn btn-simple" @click="toComment()">Comments</a>
             </div>
           </card>
         </div>
@@ -156,7 +156,7 @@
     },
     data () {
       return {
-        movieApi: 'http://localhost:8000/douban/movie/',
+        movieApi: 'douban/movie/',
         mediaUrl: 'http://localhost:8000/media/img/',
         movieData: {},
         movieCover: null,

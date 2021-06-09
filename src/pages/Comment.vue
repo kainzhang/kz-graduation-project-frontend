@@ -98,7 +98,7 @@
     },
     data () {
       return {
-        commentApi: 'http://localhost:8000/douban/comment/',
+        commentApi: 'douban/comment/',
         commentList: {},
         nextUrl: null,
         prevUrl: null,

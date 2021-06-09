@@ -126,8 +126,8 @@
         notifications: {
           topCenter: false
         },
-        bookApi: 'http://127.0.0.1:8000/douban/book/',
-        analysisApi: 'http://localhost:8000/douban/item_analysis/',
+        bookApi: 'douban/book/',
+        analysisApi: 'douban/item_analysis/',
         bookList: {},
         nextUrl: null,
         prevUrl: null,

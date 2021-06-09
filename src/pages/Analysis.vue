@@ -52,6 +52,7 @@
             <thead>
               <tr>
                 <th scope="col">OBJECT</th>
+                <th scope="col">CMT NUM</th>
                 <th scope="col">POSITIVE RATE</th>
                 <th scope="col">ANALYZING DATE</th>
                 <th scope="col">Operation</th>
@@ -60,6 +61,7 @@
             <tbody>
               <tr v-for="analysis in analysisList" :key="analysis.url">
                 <td>{{ analysis.dad_id }}</td>
+                <td>{{ analysis.comment_num }}</td>
                 <td>{{ analysis.pos_rate.toFixed(6) }}</td>
                 <td>{{ formatDate(analysis.create_date) }}</td>
                 <td>
@@ -99,7 +101,7 @@
     },
     data () {
       return {
-        analysisApi: 'http://localhost:8000/douban/item_analysis/',
+        analysisApi: 'douban/item_analysis/',
         analysisList: {},
         nextUrl: null,
         prevUrl: null,
@@ -158,5 +160,6 @@
     }
   }
 </script>
+
 <style>
 </style>

@@ -37,17 +37,17 @@
           <nav>
             <ul class="pagination justify-content-end">
               <li v-if="prevUrl!=null" class="page-item">
-                <a class="page-link" href="#" tabindex="-1" @click="getPreviousPage">Prev</a>
+                <a class="page-link" tabindex="-1" @click="getPreviousPage">Prev</a>
               </li>
               <li v-else class="page-item disabled">
-                <a class="page-link" href="#" tabindex="-1" @click="getPreviousPage">Prev</a>
+                <a class="page-link" tabindex="-1" @click="getPreviousPage">Prev</a>
               </li>
 
               <li v-if="nextUrl!=null" class="page-item">
-                <a class="page-link" href="#" @click="getNextPage">Next</a>
+                <a class="page-link" @click="getNextPage">Next</a>
               </li>
               <li v-else class="page-item disabled">
-                <a class="page-link" href="#" @click="getNextPage">Next</a>
+                <a class="page-link" @click="getNextPage">Next</a>
               </li>
             </ul>
           </nav>
@@ -126,8 +126,8 @@
         notifications: {
           topCenter: false
         },
-        movieApi: 'http://127.0.0.1:8000/douban/movie/',
-        analysisApi: 'http://localhost:8000/douban/item_analysis/',
+        movieApi: 'douban/movie/',
+        analysisApi: 'douban/item_analysis/',
         movieList: {},
         nextUrl: null,
         prevUrl: null,
@@ -146,14 +146,13 @@
             page: this.nowPage,
             search: this.searchStr
           }
-        })
-          .then(res => {
+        }).then(res => {
             this.movieList = res.data.results;
             this.numMovie = res.data.count;
             this.prevUrl = res.data.previous;
             this.nextUrl = res.data.next;
             this.numPage = Math.ceil(this.numMovie / 10);
-          });
+        });
       },
       getNextPage() {
         this.nowPage += 1;
@@ -223,6 +222,7 @@
     }
   }
 </script>
+
 <style type="text/css">
   .operation-btn {
     margin-top: 32px;

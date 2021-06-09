@@ -144,9 +144,9 @@ export default {
   },
   data() {
     return {
-      analysisApi: 'http://localhost:8000/douban/item_analysis/',
-      movieApi: 'http://localhost:8000/douban/movie/',
-      bookApi: 'http://localhost:8000/douban/book/',
+      analysisApi: 'douban/item_analysis/',
+      movieApi: 'douban/movie/',
+      bookApi: 'douban/book/',
       analysisId: -1,
       chartData: {},
       coverUrl: '',

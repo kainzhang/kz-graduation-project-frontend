@@ -16,6 +16,24 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import App from './App.vue'
+import axios from 'axios'
+import Vuex from 'vuex'
+
+
+// Axios
+axios.defaults.baseURL = 'http://localhost:8000/';
+axios.defaults.headers.common['Authorization'] = 'JWT ' + localStorage.getItem('token');
+
+axios.interceptors.request.use(
+  function(config) {
+   const token = localStorage.getItem('token')
+   if (token) config.headers.Authorization = `JWT ${token}`
+   return config
+  },
+  function(error) {
+   return Promise.reject(error)
+  }
+)
 
 // LightBootstrap plugin
 import LightBootstrap from './light-bootstrap-main'
@@ -27,6 +45,8 @@ import './registerServiceWorker'
 // plugin setup
 Vue.use(VueRouter)
 Vue.use(LightBootstrap)
+Vue.use(Vuex);
+
 
 // configure router
 const router = new VueRouter({
@@ -41,9 +61,36 @@ const router = new VueRouter({
   }
 })
 
+// Vuex 
+const state = {
+  user: null
+}
+
+const store = new Vuex.Store({
+  state,
+  getters: {
+    user: (state) => {
+      return state.user;
+    }
+  },
+  actions: {
+    user(context, user) {
+      context.commit('user', user);
+    }
+  },
+  mutations: {
+    user(state, user) {
+      state.user = user;
+    }
+  }
+})
+
+export default store;
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
-  render: h => h(App),
-  router
+  router,
+  store,
+  render: h => h(App)
 })

@@ -40,9 +40,9 @@
           </li>
         </ul> -->
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
+          <li v-if="user" class="nav-item">
             <a class="nav-link" href="#">
-              Hello, kainzhang
+              {{ user.first_name }} {{ user.last_name }}
             </a>
           </li>
           <!-- <base-dropdown title="Dropdown">
@@ -55,7 +55,7 @@
             <a class="dropdown-item" href="#">Separated link</a>
           </base-dropdown> -->
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a @click="handleLogout" href="javascript:void(0)" class="nav-link">
               Log out
             </a>
           </li>
@@ -64,7 +64,9 @@
     </div>
   </nav>
 </template>
-<script>
+<script> 
+  import {mapGetters} from 'vuex'
+
   export default {
     computed: {
       routeName () {
@@ -72,10 +74,13 @@
         return this.capitalizeFirstLetter(name)
       }
     },
-    data () {
+    data() {
       return {
-        activeNotifications: false
+        activeNotifications: false,
       }
+    },
+    computed: {
+      ...mapGetters(['user'])
     },
     methods: {
       capitalizeFirstLetter (string) {
@@ -92,6 +97,12 @@
       },
       hideSidebar () {
         this.$sidebar.displaySidebar(false)
+      },
+      handleLogout() {
+        localStorage.removeItem('token');
+        localStorage.removeItem('username');
+        this.$store.dispatch('user', null);
+        this.$router.push('/login');
       }
     }
   }

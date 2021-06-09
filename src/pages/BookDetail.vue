@@ -10,9 +10,9 @@
             </div>
             <hr>
             <div slot="footer" class="text-center d-flex justify-content-center">
-              <a href="#" class="btn btn-simple" @click="toBookAnalysis()">Analyses</a>
-              <a href="#" class="btn btn-simple">|</a>
-              <a href="#" class="btn btn-simple" @click="toBookComment()">Comments</a>
+              <a class="btn btn-simple" @click="toBookAnalysis()">Analyses</a>
+              <a class="btn btn-simple">|</a>
+              <a class="btn btn-simple" @click="toBookComment()">Comments</a>
             </div>
           </card>
         </div>
@@ -169,7 +169,7 @@
     },
     data () {
       return {
-        bookApi: 'http://localhost:8000/douban/book/',
+        bookApi: 'douban/book/',
         mediaUrl: 'http://localhost:8000/media/img/',
         bookData: {},
         bookCover: null,

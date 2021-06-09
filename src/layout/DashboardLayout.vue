@@ -1,5 +1,6 @@
 <template>
   <div class="wrapper">
+
     <side-bar>
       <mobile-menu slot="content"></mobile-menu>
       <sidebar-link to="/overview/">
@@ -66,6 +67,7 @@
     </div>
   </div>
 </template>
+
 <style lang="scss">
 
 </style>
@@ -74,6 +76,8 @@
   import ContentFooter from './ContentFooter.vue'
   import DashboardContent from './Content.vue'
   import MobileMenu from './MobileMenu.vue'
+  import axios from 'axios'
+
   export default {
     components: {
       TopNavbar,
@@ -87,6 +91,15 @@
           this.$sidebar.displaySidebar(false)
         }
       }
+    },
+    async created() {
+      var username = localStorage.getItem('username');
+      const resUser = await axios.get('user/', {
+        params: {
+          search: username
+        }
+      });
+      this.$store.dispatch('user', resUser.data.results[0])
     }
   }
 

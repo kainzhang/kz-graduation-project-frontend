@@ -76,7 +76,6 @@
   import ContentFooter from './ContentFooter.vue'
   import DashboardContent from './Content.vue'
   import MobileMenu from './MobileMenu.vue'
-  import axios from 'axios'
 
   export default {
     components: {
@@ -93,13 +92,8 @@
       }
     },
     async created() {
-      var username = localStorage.getItem('username');
-      const resUser = await axios.get('user/', {
-        params: {
-          search: username
-        }
-      });
-      this.$store.dispatch('user', resUser.data.results[0])
+      var user = localStorage.getItem('user');
+      this.$store.dispatch('user', JSON.parse(user))
     }
   }
 

@@ -100,7 +100,7 @@
       },
       handleLogout() {
         localStorage.removeItem('token');
-        localStorage.removeItem('username');
+        localStorage.removeItem('user');
         this.$store.dispatch('user', null);
         this.$router.push('/login');
       }

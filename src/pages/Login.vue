@@ -19,12 +19,12 @@
               <div class="form-group login-form-group">
                   <label for="login-username">Username</label>
                   <input type="text" class="login-input form-control" id="login-username" v-model="username">
-                  <small id="login-username-help" class="login-help form-text">&nbsp;</small>
+                  <small id="login-username-help" class="login-help form-text">{{ usernameInfo }}</small>
               </div>
               <div class="form-group login-form-group">
                   <label for="login-password">Password</label>
                   <input type="password" class="login-input form-control" id="login-password" v-model="password">
-                  <small id="login-password-help" class="login-help form-text">&nbsp;</small>
+                  <small id="login-password-help" class="login-help form-text">{{ passwordInfo }}</small>
               </div>
 
               <button type="submit" class="login-btn btn btn-round btn-fill btn-primary">Login</button>
@@ -63,26 +63,30 @@ export default {
     },
     data() {
       return {
-        user: null,
         username: '',
         password: '',
+        usernameInfo: '\u00a0',
+        passwordInfo: '\u00a0'
       }
     },
     methods: {
       async handleLogin() {
+        this.usernameInfo = (this.username === '' ? '\u00a0用户名不能为空！': '\u00a0')
+        this.passwordInfo = (this.password === '' ? '\u00a0密码不能为空！' : '\u00a0');
+
+        if (this.username === '' || this.password === '') return;
+
         const res = await axios.post('api-token-auth/', {
           username: this.username,
           password: this.password
+        }).catch(err => {
+          console.log(err);
+          this.passwordInfo = '\u00a0用户名或密码错误！'
         });
-        // console.log(resToken.data.token)
+
         localStorage.setItem('token', res.data.token);
-        localStorage.setItem('username', this.username);
-        const resUser = await axios.get('user/', {
-          params: {
-            search: this.username
-          }
-        });
-        this.$store.dispatch('user', resUser.data.results[0])
+        localStorage.setItem('user', JSON.stringify(res.data.user));
+        this.$store.dispatch('user', res.data.user)
         this.$router.push('/');
       }
     }

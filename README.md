@@ -39,5 +39,5 @@ The repo uses [vue-cli](https://github.com/vuejs/vue-cli) scaffolding which take
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
-[LICENSE]: ./LICENSE.md
+[LICENSE]: ./LICENSE
 [license-badge]: https://img.shields.io/badge/license-MIT-blue.svg

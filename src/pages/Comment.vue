@@ -98,7 +98,6 @@
     },
     data () {
       return {
-        commentApi: 'douban/comment/',
         commentList: {},
         nextUrl: null,
         prevUrl: null,
@@ -110,7 +109,7 @@
     },
     methods: {
       getAll() {
-        axios.get(this.commentApi, {
+        axios.get('douban/comment/', {
           params: {
             search: this.dadId,
             page: this.nowPage

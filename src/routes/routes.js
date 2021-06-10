@@ -43,7 +43,7 @@ const routes = [
         component: Book
       },
       {
-        path: 'book/detail',
+        path: 'book/detail/',
         name: 'Book Detail',
         component: BookDetail
       },
@@ -79,7 +79,7 @@ const routes = [
       },
       {
         path: 'comment/',
-        name: 'comment',
+        name: 'Comment',
         component: Comment
       },
       // {

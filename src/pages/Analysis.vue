@@ -104,7 +104,6 @@
     },
     data () {
       return {
-        analysisApi: 'douban/item_analysis/',
         analysisList: {},
         nextUrl: null,
         prevUrl: null,
@@ -116,7 +115,7 @@
     },
     methods: {
       getAll() {
-        axios.get(this.analysisApi, {
+        axios.get('douban/item_analysis/', {
           params: {
             search: this.dadId,
             page: this.nowPage

@@ -169,8 +169,6 @@
     },
     data () {
       return {
-        bookApi: 'douban/book/',
-        mediaUrl: 'http://localhost:8000/media/img/',
         bookData: {},
         bookCover: null,
         bookId: '',
@@ -178,13 +176,13 @@
     },
     methods: {
       getBookDetail() {
-        axios.get(this.bookApi, {
+        axios.get('douban/book/', {
           params: {
             search: this.bookId
           }
         }).then(res => {
           this.bookData = res.data.results[0];
-          this.bookCover = this.mediaUrl + this.bookId + '.jpg'
+          this.bookCover =  'http://localhost:8000/media/img/' + this.bookId + '.jpg'
         })
       },
       toBookComment() {

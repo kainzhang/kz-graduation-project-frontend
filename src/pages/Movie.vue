@@ -129,8 +129,6 @@
         notifications: {
           topCenter: false
         },
-        movieApi: 'douban/movie/',
-        analysisApi: 'douban/item_analysis/',
         movieList: {},
         nextUrl: null,
         prevUrl: null,
@@ -143,7 +141,7 @@
     },
     methods: {
       getAll() {
-        axios.get(this.movieApi, {
+        axios.get('douban/movie/', {
           params: {
             ordering: '-create_date',
             page: this.nowPage,
@@ -166,7 +164,7 @@
         this.getAll();
       },
       toAnalyze(movieId) {
-        axios.post(this.analysisApi, {
+        axios.post('douban/item_analysis/', {
           dad_id: movieId,
           dad_type: 1
         }).then(() => {
@@ -183,7 +181,7 @@
         })
       },
       insertMovie() {
-        axios.post(this.movieApi, {
+        axios.post('douban/movie/', {
           douban_url: 'https://movie.douban.com/subject/' + this.doubanId
         }).then(() => {
           this.notifyVue('top', 'right', '<span>您提交的 添加/修改 请求：<b>' + this.doubanId + '</b> 已发送后台处理 <a href="http://localhost:6800/jobs">点击查看任务状态</a></span>');

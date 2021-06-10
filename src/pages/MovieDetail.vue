@@ -156,8 +156,6 @@
     },
     data () {
       return {
-        movieApi: 'douban/movie/',
-        mediaUrl: 'http://localhost:8000/media/img/',
         movieData: {},
         movieCover: null,
         movieId: '',
@@ -165,13 +163,13 @@
     },
     methods: {
       getMovieDetail() {
-        axios.get(this.movieApi, {
+        axios.get('douban/movie/', {
           params: {
             search: this.movieId
           }
         }).then(res => {
           this.movieData = res.data.results[0];
-          this.movieCover = this.mediaUrl + this.movieId + '.jpg'
+          this.movieCover =  'http://localhost:8000/media/img/' + this.movieId + '.jpg'
         })
       },
       toComment() {

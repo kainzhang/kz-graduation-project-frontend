@@ -129,8 +129,6 @@
         notifications: {
           topCenter: false
         },
-        bookApi: 'douban/book/',
-        analysisApi: 'douban/item_analysis/',
         bookList: {},
         nextUrl: null,
         prevUrl: null,
@@ -143,7 +141,7 @@
     },
     methods: {
       getAll() {
-        axios.get(this.bookApi, {
+        axios.get('douban/book/', {
           params: {
             ordering: '-create_date',
             page: this.nowPage,
@@ -167,7 +165,7 @@
         this.getAll();
       },
       toAnalyze(bookId) {
-        axios.post(this.analysisApi, {
+        axios.post('douban/item_analysis/', {
           dad_id: bookId,
           dad_type: 2
         }).then(() => {
@@ -184,7 +182,7 @@
         })
       },
       insertBook() {
-        axios.post(this.bookApi, {
+        axios.post('douban/book/', {
           douban_url: 'https://book.douban.com/subject/' + this.doubanId
         }).then(() => {
           this.notifyVue('top', 'right', '<span>您提交的 添加/修改 请求：<b>' + this.doubanId + '</b> 已发送后台处理 <a href="http://localhost:6800/jobs">点击查看任务状态</a></span>');

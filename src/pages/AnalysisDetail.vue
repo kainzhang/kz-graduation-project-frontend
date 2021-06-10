@@ -67,7 +67,10 @@
 
               </div>
               
-              <a href="javascript:void(0)" @click="toComment()" class="analysis-btn btn btn-b btn-round btn-fill btn-success" role="button" aria-pressed="true">Comments</a>
+              <router-link
+                :to="{name:'Comment', query:{douban_id:chartData.dad_id}}"
+                class="analysis-btn btn btn-b btn-round btn-fill btn-success"
+              >Comments</router-link>
               <a href="javascript:void(0)" @click="toDetail()" class="analysis-btn btn btn-b btn-round btn-fill btn-default" role="button" aria-pressed="true">Detail</a>
 
             </div>
@@ -144,9 +147,6 @@ export default {
   },
   data() {
     return {
-      analysisApi: 'douban/item_analysis/',
-      movieApi: 'douban/movie/',
-      bookApi: 'douban/book/',
       analysisId: -1,
       chartData: {},
       coverUrl: '',
@@ -547,7 +547,7 @@ export default {
     },
 
     getAnalysisDetail(analysisId) {
-      axios.get(this.analysisApi + analysisId).then(res => {
+      axios.get('douban/item_analysis/' + analysisId).then(res => {
         this.chartData = res.data
         
         if (this.chartData.dad_type == 1) {
@@ -578,7 +578,7 @@ export default {
       });
     },
     getMovieDetail(movieId) {
-      axios.get(this.movieApi, {
+      axios.get('douban/movie/', {
         params: {
           search: movieId
         }
@@ -587,20 +587,12 @@ export default {
       })
     },
     getBookDetail(bookId) {
-      axios.get(this.bookApi, {
+      axios.get('douban/book/', {
         params: {
           search: bookId
         }
       }).then(res => {
         this.itemData = res.data.results[0];
-      })
-    },
-    toComment() {
-      this.$router.push({
-        path: '/comment/',
-        query: {
-          douban_id: this.chartData.dad_id
-        }
       })
     },
     toDetail() {
@@ -625,9 +617,6 @@ export default {
   mounted() {
     this.analysisId = this.$route.query.analysis_id;
     this.getAnalysisDetail(this.analysisId);
-  },
-  created() {
-    
   }
 
 }

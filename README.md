@@ -1,43 +1,19 @@
-# [Vue Light Bootstrap Dashboard](http://vuejs.creative-tim.com/vue-light-bootstrap-dashboard) [![license][license-badge]][LICENSE]
+# Graduation Project Frontend
 
-> Admin dashboard based on light bootstrap dashboard UI template + vue-router
+> 毕业设计前端仓库（影视与文学作品热评情感分析系统）
 
-This project is a vue version of [Light bootstrap dashboard](https://www.creative-tim.com/product/light-bootstrap-dashboard)
-designed for vue js. The dashboard includes Bootstrap 4, vue-router, chartist, google-maps and several other plugins/components.
+基于 [Vue Light Bootstrap Dashboard](https://github.com/creativetimofficial/vue-light-bootstrap-dashboard) 实现，在其基础上添加了 Axios、Vuex 和 ECharts。
 
-Check the [Live Demo here](http://vuejs.creative-tim.com/vue-light-bootstrap-dashboard).
+后端仓库传送门: [Graduation Project Backend](https://github.com/kainzhang/kz-graduation-project-backend)
 
-![](public/Dashboard.PNG)
 ## :rocket: Getting started
 
-Vue Light Bootstrap Dashboard is built on top of Bootstrap 4, Vuejs and Vue-router. To get started do the following steps:
-1. Download the project
-2. Make sure you have node.js (https://nodejs.org/en/) installed
-3. Type `npm install` in the source folder where `package.json` is located
-4. Type `npm run dev` to start the development server
+1. Clone 项目到本地
+2. 确定你已安装 node.js (https://nodejs.org/en/)
+3. 在根目录下终端输入 `npm install` 安装依赖
+4. 终端输入 `npm run dev` 启动开发服务器
 
-The repo uses [vue-cli](https://github.com/vuejs/vue-cli) scaffolding which takes care of the development setup with webpack and all the necessary modern tools to make web development faster and easier.
+## :balloon: Tips
 
-## [Documentation](https://demos.creative-tim.com/vue-light-bootstrap-dashboard/documentation/#/buttons)
-
-## :cloud: Build Setup
-
-### install dependencies
-`npm install`
-### serve with hot reload at localhost:8000
-`npm run dev`
-### build for production with minification
-`npm run build`
-### run unit tests
-`npm run unit`
-### run and watch unit tests
-`npm run unit:watch`
-
-## :clipboard: Contribution guide
-* `npm install` or `yarn install`
-* Please don't use jQuery or jQuery based plugins since there are many pure Vue alternatives
-
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
-
-[LICENSE]: ./LICENSE
-[license-badge]: https://img.shields.io/badge/license-MIT-blue.svg
++ 运行前端项目前请确保后端项目已运行
++ 登录账户通过后台添加，后台包含与后端项目中

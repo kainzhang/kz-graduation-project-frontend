@@ -54,10 +54,13 @@
             <div class="divider"></div>
             <a class="dropdown-item" href="#">Separated link</a>
           </base-dropdown> -->
-          <li class="nav-item">
+          <li v-if="user" class="nav-item">
             <a @click="handleLogout" href="javascript:void(0)" class="nav-link">
-              Log out
+              Logout
             </a>
+          </li>
+          <li v-else class="nav-item">
+            <router-link :to="{path:'/login'}" class="nav-link">Login</router-link>
           </li>
         </ul>
       </div>

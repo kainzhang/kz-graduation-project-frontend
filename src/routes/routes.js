@@ -57,11 +57,11 @@ const routes = [
         name: 'Analysis Detail',
         component: AnalysisDetail
       },
-      // {
-      //   path: 'icons/',
-      //   name: 'Icons',
-      //   component: Icons
-      // },
+      {
+        path: 'icons/',
+        name: 'Icons',
+        component: Icons
+      },
       {
         path: 'movie/',
         name: 'Movie',

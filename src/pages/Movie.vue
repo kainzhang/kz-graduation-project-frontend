@@ -37,17 +37,17 @@
           <nav>
             <ul class="pagination justify-content-end">
               <li v-if="prevUrl!=null" class="page-item">
-                <a class="page-link" tabindex="-1" @click="getPreviousPage">Prev</a>
+                <a class="page-link" href="javascript:void(0)" @click="getPreviousPage">Prev</a>
               </li>
               <li v-else class="page-item disabled">
-                <a class="page-link" tabindex="-1" @click="getPreviousPage">Prev</a>
+                <a class="page-link" href="javascript:void(0)"  @click="getPreviousPage">Prev</a>
               </li>
 
               <li v-if="nextUrl!=null" class="page-item">
-                <a class="page-link" @click="getNextPage">Next</a>
+                <a class="page-link" href="javascript:void(0)" @click="getNextPage">Next</a>
               </li>
               <li v-else class="page-item disabled">
-                <a class="page-link" @click="getNextPage">Next</a>
+                <a class="page-link" href="javascript:void(0)" @click="getNextPage">Next</a>
               </li>
             </ul>
           </nav>
@@ -85,8 +85,11 @@
                 <td>{{ movie.rating_val }}</td>
                 <td>{{ formatDate(movie.create_date) }}</td>
                 <td>
-                  <a @click="toDetail(movie.id)" class="table-btn btn btn-b btn-round btn-fill btn-default">detail</a>
-                  <a @click="toAnalyze(movie.id)"  class="table-btn btn btn-round btn-fill btn-success">analyze</a>
+                  <router-link
+                    :to="{name:'Movie Detail', query:{movie_id:movie.id}}"
+                    class="table-btn btn btn-b btn-round btn-fill btn-default"
+                  >detail</router-link>
+                  <a href="javascript:void(0)" @click="toAnalyze(movie.id)"  class="table-btn btn btn-round btn-fill btn-success">analyze</a>
                 </td>
               </tr>
             </tbody>
@@ -161,14 +164,6 @@
       getPreviousPage() {
         this.nowPage -= 1;
         this.getAll();
-      },
-      toDetail(movieId) {
-        this.$router.push({
-          path: '/movie/detail/',
-          query: {
-            movie_id: movieId
-          }
-        })
       },
       toAnalyze(movieId) {
         axios.post(this.analysisApi, {

@@ -11,7 +11,7 @@ import BookDetail from 'src/pages/BookDetail.vue'
 import Analysis from 'src/pages/Analysis.vue'
 import AnalysisDetail from 'src/pages/AnalysisDetail.vue'
 import Comment from 'src/pages/Comment.vue'
-import Icons from 'src/pages/Icons.vue'
+import Icons from 'src/pages/trashbin/Icons.vue'
 import Notifications from 'src/pages/Notifications.vue'
 import Upgrade from 'src/pages/Upgrade.vue'
 import Typography from 'src/pages/trashbin/Typography.vue'
@@ -57,11 +57,11 @@ const routes = [
         name: 'Analysis Detail',
         component: AnalysisDetail
       },
-      {
-        path: 'icons/',
-        name: 'Icons',
-        component: Icons
-      },
+      // {
+      //   path: 'icons/',
+      //   name: 'Icons',
+      //   component: Icons
+      // },
       {
         path: 'movie/',
         name: 'Movie',
@@ -82,11 +82,11 @@ const routes = [
         name: 'comment',
         component: Comment
       },
-      {
-        path: 'typography/',
-        name: 'typography',
-        component: Typography
-      },
+      // {
+      //   path: 'typography/',
+      //   name: 'typography',
+      //   component: Typography
+      // },
       {
         path: 'upgrade/',
         name: 'Upgrade to PRO',

@@ -23,17 +23,17 @@
             <nav>
               <ul class="pagination justify-content-end">
                 <li v-if="prevUrl!=null" class="page-item">
-                  <a class="page-link" href="#" tabindex="-1" @click="getPreviousPage">Prev</a>
+                  <a class="page-link" href="javascript:void(0)" @click="getPreviousPage">Prev</a>
                 </li>
                 <li v-else class="page-item disabled">
-                  <a class="page-link" href="#" tabindex="-1" @click="getPreviousPage">Prev</a>
+                  <a class="page-link" href="javascript:void(0)" @click="getPreviousPage">Prev</a>
                 </li>
 
                 <li v-if="nextUrl!=null" class="page-item">
-                  <a class="page-link" href="#" @click="getNextPage">Next</a>
+                  <a class="page-link" href="javascript:void(0)" @click="getNextPage">Next</a>
                 </li>
                 <li v-else class="page-item disabled">
-                  <a class="page-link" href="#" @click="getNextPage">Next</a>
+                  <a class="page-link" href="javascript:void(0)" @click="getNextPage">Next</a>
                 </li>
               </ul>
           </nav>

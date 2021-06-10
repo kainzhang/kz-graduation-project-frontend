@@ -13,9 +13,9 @@
               {{ movieData.description }}
             </p>
             <div slot="footer" class="text-center d-flex justify-content-center">
-              <a class="btn btn-simple" @click="toAnalysis()">Analyses</a>
-              <a class="btn btn-simple">|</a>
-              <a class="btn btn-simple" @click="toComment()">Comments</a>
+              <a class="btn btn-simple" href="javascript:void(0)" @click="toAnalysis()" >Analyses</a>
+              <a class="btn btn-simple" href="javascript:void(0)">|</a>
+              <a class="btn btn-simple" href="javascript:void(0)" @click="toComment()" >Comments</a>
             </div>
           </card>
         </div>

@@ -37,17 +37,17 @@
           <nav>
             <ul class="pagination justify-content-end">
               <li v-if="prevUrl!=null" class="page-item">
-                <a class="page-link" href="#" tabindex="-1" @click="getPreviousPage">Prev</a>
+                <a class="page-link" href="javascript:void(0)" @click="getPreviousPage">Prev</a>
               </li>
               <li v-else class="page-item disabled">
-                <a class="page-link" href="#" tabindex="-1" @click="getPreviousPage">Prev</a>
+                <a class="page-link" href="javascript:void(0)" @click="getPreviousPage">Prev</a>
               </li>
 
               <li v-if="nextUrl!=null" class="page-item">
-                <a class="page-link" href="#" @click="getNextPage">Next</a>
+                <a class="page-link" href="javascript:void(0)" @click="getNextPage">Next</a>
               </li>
               <li v-else class="page-item disabled">
-                <a class="page-link" href="#" @click="getNextPage">Next</a>
+                <a class="page-link" href="javascript:void(0)" @click="getNextPage">Next</a>
               </li>
             </ul>
           </nav>
@@ -85,8 +85,11 @@
                 <td>{{ book.rating_val }}</td>
                 <td>{{ formatDate(book.create_date) }}</td>
                 <td>
-                  <a @click="toDetail(book.id)" class="table-btn btn btn-b btn-round btn-fill btn-default">detail</a>
-                  <a @click="toAnalyze(book.id)"  class="table-btn btn btn-round btn-fill btn-success">analyze</a>
+                  <router-link
+                    :to="{name:'Book Detail', query:{book_id:book.id}}"
+                    class="table-btn btn btn-b btn-round btn-fill btn-default"
+                  >detail</router-link>
+                  <a href="javascript:void(0)" @click="toAnalyze(book.id)" class="table-btn btn btn-round btn-fill btn-success">analyze</a>
                 </td>
               </tr>
             </tbody>
@@ -162,14 +165,6 @@
       getPreviousPage() {
         this.nowPage -= 1;
         this.getAll();
-      },
-      toDetail(bookId) {
-        this.$router.push({
-          path: '/book/detail/',
-          query: {
-            book_id: bookId
-          }
-        })
       },
       toAnalyze(bookId) {
         axios.post(this.analysisApi, {

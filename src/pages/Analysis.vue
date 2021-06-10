@@ -23,17 +23,17 @@
             <nav>
               <ul class="pagination justify-content-end">
                 <li v-if="prevUrl!=null" class="page-item">
-                  <a class="page-link" href="#" tabindex="-1" @click="getPreviousPage">Prev</a>
+                  <a class="page-link" href="javascript:void(0)" @click="getPreviousPage">Prev</a>
                 </li>
                 <li v-else class="page-item disabled">
-                  <a class="page-link" href="#" tabindex="-1" @click="getPreviousPage">Prev</a>
+                  <a class="page-link" href="javascript:void(0)" @click="getPreviousPage">Prev</a>
                 </li>
 
                 <li v-if="nextUrl!=null" class="page-item">
-                  <a class="page-link" href="#" @click="getNextPage">Next</a>
+                  <a class="page-link" href="javascript:void(0)" @click="getNextPage">Next</a>
                 </li>
                 <li v-else class="page-item disabled">
-                  <a class="page-link" href="#" @click="getNextPage">Next</a>
+                  <a class="page-link" href="javascript:void(0)" @click="getNextPage">Next</a>
                 </li>
               </ul>
           </nav>
@@ -65,7 +65,10 @@
                 <td>{{ analysis.pos_rate.toFixed(6) }}</td>
                 <td>{{ formatDate(analysis.create_date) }}</td>
                 <td>
-                  <a @click="toDetail(analysis.id)" class="table-btn btn btn-b btn-round btn-fill btn-default">detail</a>
+                  <router-link
+                    :to="{name:'Analysis Detail', query:{analysis_id:analysis.id}}"
+                    class="table-btn btn btn-b btn-round btn-fill btn-default"
+                  >detail</router-link>
                 </td>
               </tr>
             </tbody>
@@ -133,14 +136,6 @@
       getPreviousPage() {
         this.nowPage -= 1;
         this.getAll();
-      },
-      toDetail(analysisId) {
-        this.$router.push({
-          path: '/analysis/detail/',
-          query: {
-            analysis_id: analysisId
-          }
-        })
       },
       formatDate(date) {
         var date = new Date(date);

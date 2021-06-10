@@ -67,8 +67,8 @@
 
               </div>
               
-              <a @click="toComment()" class="analysis-btn btn btn-b btn-round btn-fill btn-success" role="button" aria-pressed="true">Comments</a>
-              <a @click="toDetail()" class="analysis-btn btn btn-b btn-round btn-fill btn-default" role="button" aria-pressed="true">Detail</a>
+              <a href="javascript:void(0)" @click="toComment()" class="analysis-btn btn btn-b btn-round btn-fill btn-success" role="button" aria-pressed="true">Comments</a>
+              <a href="javascript:void(0)" @click="toDetail()" class="analysis-btn btn btn-b btn-round btn-fill btn-default" role="button" aria-pressed="true">Detail</a>
 
             </div>
             

@@ -136,6 +136,17 @@
         <div class="col-6">
           <card style="height: 375px">
             <template slot="header">
+              <h4 class="card-title">情感分数统计图</h4>
+              <p class="card-category">Sentiment score statistics chart</p>
+            </template>
+
+            <div id="senti-score-map" style="height: 100%"></div>
+          </card>
+        </div>
+
+        <div class="col-6">
+          <card style="height: 375px">
+            <template slot="header">
               <h4 class="card-title">评论热词词云</h4>
               <p class="card-category">Word Cloud: Hot words in comments</p>
             </template>
@@ -168,6 +179,7 @@ export default {
       sentiNum: {},
       sentiPerYear: {},
       sentiSumYear: {},
+      sentiScoreMap: {},
       wordCloud: {}
     }
   },
@@ -565,16 +577,21 @@ export default {
         let obj = {
           name: key,
           value: wordDict[key]
-        }
-        res.push(obj)
+        };
+        res.push(obj);
       }
-      return res
+      return res;
     },
 
     wordCloudChart() {
       var chartDom = document.getElementById('word-cloud');
       var chart = echarts.init(chartDom);
       chart.setOption({
+          toolbox: {
+            feature: {
+              saveAsImage: {}
+            }
+          },
           series: [{
               type: 'wordCloud',
               shape: 'circle',
@@ -626,6 +643,68 @@ export default {
 
     },
 
+    processSentiScoreMapData(sentiScoreMap) {
+      let res = [];
+      for (var i = 0; i < 50; i++) {
+        let tmp = i * 0.02;
+        if (sentiScoreMap['' + tmp]) {
+          res.push(sentiScoreMap['' + tmp]);
+        } else {
+          res.push('0');
+        }
+      }
+      return res;
+    },
+
+    sentiScoreMapChart() {
+      var chartDom = document.getElementById('senti-score-map');
+      var myChart = echarts.init(chartDom);
+      var option;
+
+      var xAxisData = [];
+      for (var i = 0; i < 50; i++) {
+          xAxisData.push(0.02 * i);
+      }
+
+      option = {
+          legend: {
+              data: ['score']
+          },
+          toolbox: {
+            feature: {
+                saveAsImage: {}
+            }
+          },
+            grid: {
+            left: '0%',
+            top: '5%',
+            right: '5%',
+            bottom: '4%',
+            containLabel: true
+          },
+          tooltip: {},
+          xAxis: {
+              data: xAxisData,
+              splitLine: {
+                  show: false
+              }
+          },
+          yAxis: {
+          },
+          series: [{
+              name: 'sentiment score',
+              type: 'bar',
+              data: this.processSentiScoreMapData(this.sentiScoreMap),
+              emphasis: {
+                  focus: 'series'
+              },
+          }],
+      };
+
+      option && myChart.setOption(option);
+
+    },
+
     getAnalysisDetail(analysisId) {
       axios.get('douban/item_analysis/' + analysisId).then(res => {
         this.chartData = res.data
@@ -655,6 +734,10 @@ export default {
 
         this.sentiSumYear = JSON.parse(this.chartData.senti_sum_year);
         this.sentiSumYearChart();
+
+        this.sentiScoreMap = JSON.parse(this.chartData.senti_score_map);
+        console.log(this.sentiScoreMap)
+        this.sentiScoreMapChart();
 
         this.wordCloud = JSON.parse(this.chartData.word_cloud);
         this.wordCloudChart();

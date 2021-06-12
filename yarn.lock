@@ -3212,7 +3212,12 @@
     "jsbn" "~0.1.0"
     "safer-buffer" "^2.1.0"
 
-"echarts@^5.1.1":
+"echarts-wordcloud@^2.0.0":
+  "integrity" "sha512-K7l6pTklqdW7ZWzT/1CS0KhBSINr/cd7c5N1fVMzZMwLQHEwT7x+nivK7g5hkVh7WNcAv4Dn6/ZS5zMKRozC1g=="
+  "resolved" "https://registry.npmjs.org/echarts-wordcloud/-/echarts-wordcloud-2.0.0.tgz"
+  "version" "2.0.0"
+
+"echarts@^5.0.1", "echarts@^5.1.1":
   "integrity" "sha512-b3nP8M9XwZM2jISuA+fP0EuJv8lcfgWrinel185Npy8bE/UhXTDIPJcqgQOCWdvk0c5CeT6Dsm1xBjmJXAGlxQ=="
   "resolved" "https://registry.npmjs.org/echarts/-/echarts-5.1.1.tgz"
   "version" "5.1.1"

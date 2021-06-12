@@ -132,6 +132,17 @@
             <div id="senti-per-year" style="height: 100%"></div>
           </card>
         </div>
+
+        <div class="col-6">
+          <card style="height: 375px">
+            <template slot="header">
+              <h4 class="card-title">评论热词词云</h4>
+              <p class="card-category">Word Cloud: Hot words in comments</p>
+            </template>
+
+            <div id="word-cloud" style="height: 100%"></div>
+          </card>
+        </div>
       </div>
     </div>
   </div>
@@ -139,7 +150,8 @@
 <script>
 import Card from 'src/components/Cards/Card.vue'
 import axios from 'axios'
-import * as echarts from 'echarts';
+import * as echarts from 'echarts'
+import 'echarts-wordcloud'
 
 export default {
   components: {
@@ -156,6 +168,7 @@ export default {
       sentiNum: {},
       sentiPerYear: {},
       sentiSumYear: {},
+      wordCloud: {}
     }
   },
   methods: {
@@ -546,6 +559,73 @@ export default {
       });
     },
 
+    processWordCloudData(wordDict) {
+      let res = [];
+      for (let key in wordDict){
+        let obj = {
+          name: key,
+          value: wordDict[key]
+        }
+        res.push(obj)
+      }
+      return res
+    },
+
+    wordCloudChart() {
+      var chartDom = document.getElementById('word-cloud');
+      var chart = echarts.init(chartDom);
+      chart.setOption({
+          series: [{
+              type: 'wordCloud',
+              shape: 'circle',
+
+              // maskImage: maskImage,
+
+              left: 'center',
+              top: 'center',
+              width: '90%',
+              height: '90%',
+              right: null,
+              bottom: null,
+
+              sizeRange: [12, 60],
+
+              rotationRange: [-90, 90],
+              rotationStep: 45,
+
+              gridSize: 8,
+
+              drawOutOfBound: false,
+
+              layoutAnimation: true,
+
+              textStyle: {
+                  fontFamily: 'sans-serif',
+                  fontWeight: 'bold',
+                  color: function () {
+                      // Random color
+                      return 'rgb(' + [
+                          Math.round(Math.random() * 160),
+                          Math.round(Math.random() * 160),
+                          Math.round(Math.random() * 160)
+                      ].join(',') + ')';
+                  }
+              },
+              emphasis: {
+                  focus: 'self',
+
+                  textStyle: {
+                      shadowBlur: 10,
+                      shadowColor: '#333'
+                  }
+              },
+              // Data is an array. Each array item must have name and value property.
+              data: this.processWordCloudData(this.wordCloud)
+          }]
+      });
+
+    },
+
     getAnalysisDetail(analysisId) {
       axios.get('douban/item_analysis/' + analysisId).then(res => {
         this.chartData = res.data
@@ -575,6 +655,9 @@ export default {
 
         this.sentiSumYear = JSON.parse(this.chartData.senti_sum_year);
         this.sentiSumYearChart();
+
+        this.wordCloud = JSON.parse(this.chartData.word_cloud);
+        this.wordCloudChart();
       });
     },
     getMovieDetail(movieId) {

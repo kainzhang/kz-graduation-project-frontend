@@ -1,7 +1,7 @@
 <template>
   <div class="content">
-    <div class="container-fluid login-container"
-         :style="loginStyle"
+    <div class="container-fluid auth-container"
+         :style="authStyle"
          :data-image="backgroundImage">
 
       <div class="row justify-content-md-center">
@@ -15,19 +15,22 @@
               <p class="card-category">Please sign in.</p>
             </template>
 
-            <form class="login-content" @submit.prevent="handleLogin">
-              <div class="form-group login-form-group">
+            <form class="auth-content" @submit.prevent="handleLogin">
+              <div class="form-group auth-form-group">
                   <label for="login-username">Username</label>
-                  <input type="text" class="login-input form-control" id="login-username" v-model="username">
-                  <small id="login-username-help" class="login-help form-text">{{ usernameInfo }}</small>
+                  <input type="text" class="form-control" id="login-username" v-model="username">
+                  <small class="auth-help form-text">{{ usernameInfo }}</small>
               </div>
-              <div class="form-group login-form-group">
+              <div class="form-group auth-form-group">
                   <label for="login-password">Password</label>
-                  <input type="password" class="login-input form-control" id="login-password" v-model="password">
-                  <small id="login-password-help" class="login-help form-text">{{ passwordInfo }}</small>
+                  <input type="password" class="form-control" id="login-password" v-model="password">
+                  <small class="auth-help form-text">{{ passwordInfo }}</small>
               </div>
 
-              <button type="submit" class="login-btn btn btn-round btn-fill btn-primary">Login</button>
+              <small class="auth-router-link-msg">没有账号？
+                <router-link to="/register">创建一个！</router-link>
+              </small>
+              <button type="submit" class="auth-btn btn btn-round btn-fill btn-primary">Login</button>
             </form>
 
           </card>
@@ -55,7 +58,7 @@ export default {
       }
     },
     computed: {
-      loginStyle () {
+      authStyle () {
         return {
           backgroundImage: `url(${this.backgroundImage})`
         }
@@ -71,8 +74,8 @@ export default {
     },
     methods: {
       async handleLogin() {
-        this.usernameInfo = (this.username === '' ? '\u00a0用户名不能为空！': '\u00a0')
-        this.passwordInfo = (this.password === '' ? '\u00a0密码不能为空！' : '\u00a0');
+        this.usernameInfo = (this.username === '' ? '\u00a0请输入用户名！': '\u00a0')
+        this.passwordInfo = (this.password === '' ? '\u00a0请输入密码！' : '\u00a0');
 
         if (this.username === '' || this.password === '') return;
 
@@ -83,6 +86,8 @@ export default {
           console.log(err);
           this.passwordInfo = '\u00a0用户名或密码错误！'
         });
+        
+        console.log(res)
 
         localStorage.setItem('token', res.data.token);
         localStorage.setItem('user', JSON.stringify(res.data.user));
@@ -95,7 +100,7 @@ export default {
 
 <style type="text/css">
 
-  .login-container {
+  .auth-container {
     height: 1000px;
   }
 
@@ -104,23 +109,30 @@ export default {
     padding: 12px;
   }
 
-  .login-content {
+  .auth-content {
     width: 380px;
     padding: 0 25px;
   }
 
-  .login-form-group {
+  .auth-form-group {
     margin-top: 10px;
   }
 
-  .login-help {
+  .auth-help {
     color: red;
   }
 
-  .login-btn {
-    margin: 25px 0;
+  .auth-btn {
+    margin: 20px 0;
     width: 100px;
     float: right;
+  }
+
+  .auth-router-link-msg {
+    float: left;
+    display: block;
+    line-height: 20px;
+    margin: 30px 0 30px 4px;
   }
 
 </style>

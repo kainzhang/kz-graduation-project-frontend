@@ -40,7 +40,7 @@
         <p>Notification</p>
       </sidebar-link>
 
-      <template slot="bottom-links">
+      <template slot="bottom-links" v-if="user&&user.is_staff">
         <sidebar-link class="active"
                       to="/admin">
           <i class="fa fa-superpowers"></i>

@@ -15,7 +15,8 @@ import Icons from 'src/pages/trashbin/Icons.vue'
 import Notifications from 'src/pages/Notifications.vue'
 import Admin from 'src/pages/Admin.vue'
 import Typography from 'src/pages/trashbin/Typography.vue'
-import Login from 'src/pages/Login.vue'
+import Login from 'src/pages/User/Login.vue'
+import Register from 'src/pages/User/Register.vue'
 
 const routes = [
   {
@@ -25,7 +26,13 @@ const routes = [
   },
   {
     path: '/login',
+    name: 'Login',
     component: Login
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    component: Register
   },
   {
     path: '/',

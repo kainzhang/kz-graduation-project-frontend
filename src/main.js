@@ -22,16 +22,16 @@ import Vuex from 'vuex'
 
 // Axios
 axios.defaults.baseURL = 'http://localhost:8000/';
-axios.defaults.headers.common['Authorization'] = 'JWT ' + localStorage.getItem('token');
+// axios.defaults.headers.common['Authorization'] = 'JWT ' + localStorage.getItem('token');
 
 axios.interceptors.request.use(
   function(config) {
-   const token = localStorage.getItem('token')
-   if (token) config.headers.Authorization = `JWT ${token}`
-   return config
+    const token = localStorage.getItem('token')
+    if (token) config.headers.Authorization = `JWT ${token}`
+    return config
   },
   function(error) {
-   return Promise.reject(error)
+    return Promise.reject(error)
   }
 )
 

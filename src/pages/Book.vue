@@ -3,7 +3,7 @@
     <div class="container-fluid">
       
       <div class="row">
-        <div class="col-7">
+        <div class="col-7" v-if="user.is_staff">
           <label for="basic-url">Douban URL</label>
           <div class="input-group mb-9">
             <div class="input-group-prepend">
@@ -14,7 +14,7 @@
           <br>
         </div> 
 
-        <div class="col-5">
+        <div class="col-5" v-if="user.is_staff">
           <button type="button" class="operation-btn btn btn-round btn-fill btn-primary" @click="insertBook()">Crawl</button>
         </div>
 
@@ -88,8 +88,8 @@
                   <router-link
                     :to="{name:'Book Detail', query:{book_id:book.id}}"
                     class="table-btn btn btn-b btn-round btn-fill btn-default"
-                  >detail</router-link>
-                  <a href="javascript:void(0)" @click="toAnalyze(book.id)" class="table-btn btn btn-round btn-fill btn-success">analyze</a>
+                  >Detail</router-link>
+                  <a v-if="user.is_staff" href="javascript:void(0)" @click="toAnalyze(book.id)" class="table-btn btn btn-round btn-fill btn-success">Analyze</a>
                 </td>
               </tr>
             </tbody>
@@ -117,11 +117,15 @@
   import LTable from 'src/components/Table.vue'
   import Card from 'src/components/Cards/Card.vue'
   import axios from 'axios'
+  import {mapGetters} from 'vuex'
 
   export default {
     components: {
       LTable,
       Card
+    },
+    computed: {
+      ...mapGetters(['user'])
     },
     data () {
       return {

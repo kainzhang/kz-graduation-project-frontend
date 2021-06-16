@@ -42,7 +42,7 @@
         <ul class="navbar-nav ml-auto">
           <li v-if="user" class="nav-item">
             <a class="nav-link" href="#">
-              {{ user.first_name }} {{ user.last_name }}
+              Hello, {{ user.first_name }} {{ user.last_name }}
             </a>
           </li>
           <!-- <base-dropdown title="Dropdown">

@@ -68,7 +68,7 @@
                   <router-link
                     :to="{name:'Analysis Detail', query:{analysis_id:analysis.id}}"
                     class="table-btn btn btn-b btn-round btn-fill btn-default"
-                  >detail</router-link>
+                  >Result</router-link>
                 </td>
               </tr>
             </tbody>

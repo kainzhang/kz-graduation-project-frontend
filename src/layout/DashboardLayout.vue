@@ -35,22 +35,14 @@
         <i class="fa fa-comments-o"></i>
         <p>Comment</p>
       </sidebar-link>
-      <!-- <sidebar-link to="/icons/">
-        <i class="fa fa-diamond"></i>
-        <p>Icons</p>
-      </sidebar-link> -->
-      <sidebar-link to="/notifications/">
+      <sidebar-link to="#">
         <i class="fa fa-bell-o"></i>
-        <p>Notifications</p>
+        <p>Notification</p>
       </sidebar-link>
-      <!-- <sidebar-link to="/typography/">
-        <i class="fa fa-bell-o"></i>
-        <p>Typography</p>
-      </sidebar-link> -->
 
       <template slot="bottom-links">
         <sidebar-link class="active"
-                      to="/upgrade">
+                      to="/admin">
           <i class="fa fa-superpowers"></i>
           <p>Administration</p>
         </sidebar-link>
@@ -76,6 +68,7 @@
   import ContentFooter from './ContentFooter.vue'
   import DashboardContent from './Content.vue'
   import MobileMenu from './MobileMenu.vue'
+  import {mapGetters} from 'vuex'
 
   export default {
     components: {
@@ -83,6 +76,9 @@
       ContentFooter,
       DashboardContent,
       MobileMenu
+    },
+    computed: {
+      ...mapGetters(['user'])
     },
     methods: {
       toggleSidebar () {

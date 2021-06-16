@@ -13,7 +13,7 @@ import AnalysisDetail from 'src/pages/AnalysisDetail.vue'
 import Comment from 'src/pages/Comment.vue'
 import Icons from 'src/pages/trashbin/Icons.vue'
 import Notifications from 'src/pages/Notifications.vue'
-import Upgrade from 'src/pages/Upgrade.vue'
+import Admin from 'src/pages/Admin.vue'
 import Typography from 'src/pages/trashbin/Typography.vue'
 import Login from 'src/pages/Login.vue'
 
@@ -88,9 +88,9 @@ const routes = [
       //   component: Typography
       // },
       {
-        path: 'upgrade/',
-        name: 'Upgrade to PRO',
-        component: Upgrade
+        path: 'admin/',
+        name: 'Admin',
+        component: Admin
       }
     ]
   },

@@ -736,7 +736,6 @@ export default {
         this.sentiSumYearChart();
 
         this.sentiScoreMap = JSON.parse(this.chartData.senti_score_map);
-        console.log(this.sentiScoreMap)
         this.sentiScoreMapChart();
 
         this.wordCloud = JSON.parse(this.chartData.word_cloud);

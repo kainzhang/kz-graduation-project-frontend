@@ -128,7 +128,7 @@ export default {
 
         console.log(res);
         if (res.status == 201) {
-          this.notifyVue('top', 'right', '<span>🎉 Congrats!! 注册成功！</span>');
+          this.notifyVue('top', 'right', '<span>Congrats!! 注册成功！</span>');
           this.$router.push('/login');
         }
       },

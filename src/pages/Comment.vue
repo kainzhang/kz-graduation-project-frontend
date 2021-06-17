@@ -61,7 +61,10 @@
             <tbody>
               <tr v-for="comment in commentList" :key="comment.url">
                 <td>{{ comment.dad_id }}</td>
-                <td>{{ comment.content }}</td>
+                <td>
+                  {{ comment.content }}
+                  <strong v-if="comment.keywords&&comment.keywords.length>2">{{ comment.keywords }}</strong>
+                </td>
                 <td>{{ comment.rating_val }}</td>
                 <td>{{ comment.senti_score.toFixed(6) }}</td>
               </tr>
@@ -111,6 +114,7 @@
       getAll() {
         axios.get('douban/comment/', {
           params: {
+            // ordering:'-senti_score',
             search: this.dadId,
             page: this.nowPage
           }

@@ -16,7 +16,7 @@
                 <tr class="last-row">
                   <td></td>
                   <td>
-                    <a href="http://localhost:6800" class="upgrade-table-btn btn btn-b btn-round btn-fill btn-primary">Scrapy Client</a>
+                    <a href="http://localhost:6800/jobs" class="upgrade-table-btn btn btn-b btn-round btn-fill btn-primary">Scrapy Client</a>
                   </td>
                   <td>
                     <a target="_blank" href="http://localhost:8000/admin" class="upgrade-table-btn btn btn-round btn-fill btn-success">Admin System</a>

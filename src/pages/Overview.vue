@@ -298,7 +298,7 @@
             {title: '实现各模型及其序列化器和视图集', checked: true},
             {title: '实现豆瓣电影、读书、评论爬虫', checked: true},
             {title: '爬虫中间件：自动登录及自动完成人机验证', checked: true},
-            {title: 'Django与Scrapy结合，前者启动爬虫，后者抓数据存数据库', checked: true},
+            {title: 'Django与Scrapy结合，前者请求后者启动爬虫', checked: true},
             {title: 'RESTful API完善，包括过滤和排序', checked: true},
             {title: 'Django Admin功能配置和完善', checked: true},
             {title: '数据分析和ECharts数据生成（以JSON字符串存入数据库）', checked: true},
@@ -312,6 +312,7 @@
             {title: '分析结果页面ECharts图表', checked: true},
             {title: '配置路由', checked: true},
             {title: '用户登录及验证', checked: true},
+            {title: '用户注册', checked: true},
           ]
         },
       }

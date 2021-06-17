@@ -647,8 +647,9 @@ export default {
       let res = [];
       for (var i = 0; i < 50; i++) {
         let tmp = i * 0.02;
-        if (sentiScoreMap['' + tmp]) {
-          res.push(sentiScoreMap['' + tmp]);
+        let key = '' + tmp.toFixed(2);
+        if (sentiScoreMap[key]) {
+          res.push(sentiScoreMap[key]);
         } else {
           res.push('0');
         }
@@ -663,7 +664,7 @@ export default {
 
       var xAxisData = [];
       for (var i = 0; i < 50; i++) {
-          xAxisData.push(0.02 * i);
+          xAxisData.push((0.02 * i).toFixed(2));
       }
 
       option = {

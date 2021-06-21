@@ -54,6 +54,7 @@
               <tr>
                 <th scope="col">OBJECT</th>
                 <th scope="col">CONTENT</th>
+                <th scope="col">PUB DATE</th>
                 <th scope="col">RATING</th>
                 <th scope="col">SCORE</th>
               </tr>
@@ -65,6 +66,7 @@
                   {{ comment.content }}
                   <strong v-if="comment.keywords&&comment.keywords.length>2">{{ comment.keywords }}</strong>
                 </td>
+                <td>{{ formatDate(comment.pub_date) }}</td>
                 <td>{{ comment.rating_val }}</td>
                 <td>{{ comment.senti_score.toFixed(6) }}</td>
               </tr>
@@ -133,6 +135,13 @@
       getPreviousPage() {
         this.nowPage -= 1;
         this.getAll();
+      },
+      formatDate(date) {
+        var date = new Date(date);
+        var YY = date.getFullYear() + '-';
+        var MM = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+        var DD = (date.getDate() < 10 ? '0' + (date.getDate()) : date.getDate());
+        return YY + MM + DD;
       }
     },
     mounted() {

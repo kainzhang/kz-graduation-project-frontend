@@ -9,11 +9,16 @@
         </ul>
       </nav>
       <div class="copyright text-center">
-        &copy; Coded with
+        &copy; 2021
+        <a href="https://lokka.me" target="_blank">Kain Zhang</a>.
+        Powered by <a href="https://www.creative-tim.com/?ref=pdf-vuejs" target="_blank">Creative Tim</a>.
+      </div>
+      <!-- <div class="copyright text-center">
+        &copy; 
         <i class="fa fa-heart heart"></i> by
         <a href="https://binarcode.com" target="_blank">BinarCode</a>.
         Designed by <a href="https://www.creative-tim.com/?ref=pdf-vuejs" target="_blank">Creative Tim</a>.
-      </div>
+      </div> -->
     </div>
   </footer>
 </template>
